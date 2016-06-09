@@ -1,4 +1,5 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="SiteMaster.master.cs" Inherits="Project1_Game_Tracker.SiteMaster" %>
+<%@ Register Src="~/User_controls/Navbar.ascx" TagName="Navbar" TagPrefix="gtp" %>
 
 <!DOCTYPE html>
 <html lang="eng">
@@ -17,10 +18,11 @@
 </head>
 <body>
     <form id="form1" runat="server">
-    <div>
-        <asp:ContentPlaceHolder ID="MainContent" runat="server">
-        </asp:ContentPlaceHolder>
-    </div>
+        <gtp:Navbar runat="server" ID="PrimaryNavbar"></gtp:Navbar>
+        <div>
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
         <!-- Footer -->
         <footer class="footer navbar navbar-fixed-bottom bg-info">
             <div class="container">
