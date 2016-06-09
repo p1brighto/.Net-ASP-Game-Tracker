@@ -15,6 +15,7 @@
     <link href="Content/app.css" rel="stylesheet" />
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
+    <meta name="description" content="The description of my page" />
 </head>
 <body>
     <form id="form1" runat="server">
