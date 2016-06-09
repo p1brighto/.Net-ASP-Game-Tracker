@@ -9,13 +9,13 @@ using System.Web.UI.WebControls;
  * @author: Brighto Paul,Kuldeepsingh Jeewoololl
  * @date: June 8, 2016
  */
-namespace Project1_Game_Tracker.User_controls
+
+namespace Game_tracker_project1
 {
     public partial class Navbar : System.Web.UI.UserControl
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
             SetActivePage();
         }
 
@@ -30,7 +30,7 @@ namespace Project1_Game_Tracker.User_controls
         {
             switch (Page.Title)
             {
-                case "Home Page":
+                case "Home":
                     home.Attributes.Add("class", "active");
                     break;
                 case "About":

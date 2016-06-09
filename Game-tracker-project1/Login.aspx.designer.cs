@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Project1_Game_Tracker
+namespace Game_tracker_project1
 {
 
 

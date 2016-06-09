@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Project1_Game_Tracker
+namespace Game_tracker_project1
 {
 
 
-    public partial class About
+    public partial class Register
     {
     }
 }

@@ -1,6 +1,5 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="SiteMaster.master.cs" Inherits="Project1_Game_Tracker.SiteMaster" %>
-<%@ Register Src="~/User_controls/Navbar.ascx" TagName="Navbar" TagPrefix="gtp" %>
-
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="Game_tracker_project1.Site" %>
+<%@ Register Src="~/user_controls/Navbar.ascx" TagName="Navbar" TagPrefix="gtp" %>
 <!DOCTYPE html>
 <html lang="eng">
 <head runat="server">
