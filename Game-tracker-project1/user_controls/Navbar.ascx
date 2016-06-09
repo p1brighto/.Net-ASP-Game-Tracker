@@ -15,9 +15,9 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <li id="home" runat="server"><a href="Default.aspx"><i class="fa fa-home fa-lg"></i> Home</a></li>
-                <li id="about" runat="server"><a href="About.aspx"><i class="fa fa-leanpub fa-lg"></i> About</a></li>
-                <li id="login" runat="server"><a href="Login.aspx"><i class="fa fa-book fa-lg"></i> Login</a></li>
-                <li id="register" runat="server"><a href="Register.aspx"><i class="fa fa-puzzle-piece fa-lg"></i> Register</a></li>
+                <li id="about" runat="server"><a href="About.aspx"><i class="fa fa-gamepad fa-lg"></i> About</a></li>
+                <li id="login" runat="server"><a href="Login.aspx"><i class="fa fa-sign-in fa-lg"></i> Login</a></li>
+                <li id="register" runat="server"><a href="Register.aspx"><i class="fa fa-user-plus fa-lg"></i> Register</a></li>
             </ul>
         </div>
         <!-- /.navbar-collapse -->
