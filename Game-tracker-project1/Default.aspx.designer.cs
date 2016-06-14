@@ -11,5 +11,32 @@ namespace Game_tracker_project1 {
     
     
     public partial class Default {
+        
+        /// <summary>
+        /// WeekNoLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label WeekNoLabel;
+        
+        /// <summary>
+        /// DateSelector control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Calendar DateSelector;
+        
+        /// <summary>
+        /// GamesGridView control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GamesGridView;
     }
 }

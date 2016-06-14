@@ -1,1 +1,32 @@
-﻿/*custom*/
+﻿/**
+ * @author: Brighto Paul,Kuldeepsingh Jeewoololl
+ * @date: June 8, 2016
+ * version:1.0
+ * Description:Custom Css lives here
+ */
+
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 80px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+}
+
+
+/* Custom page CSS
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
+
+.container .text-muted {
+  margin: 20px 0;
+}

@@ -6,8 +6,10 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 
 /**
- * @author: Brighto Paul,Kuldeepsingh Jeewoololl
+ * @author: Brighto Paul(200303805),Kuldeepsingh Jeewoololl(200304689)
  * @date: June 8, 2016
+ * version:1.0
+ * Description:Defines the navbar page
  */
 
 namespace Game_tracker_project1
@@ -35,6 +37,9 @@ namespace Game_tracker_project1
                     break;
                 case "About":
                     about.Attributes.Add("class", "active");
+                    break;
+                case "Dashboard":
+                    dashboard.Attributes.Add("class", "active");
                     break;
                 case "Login":
                     login.Attributes.Add("class", "active");
