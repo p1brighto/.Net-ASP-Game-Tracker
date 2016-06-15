@@ -64,7 +64,7 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="GameTrackerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Games">
+        <EntityType Name="Game">
           <Key>
             <PropertyRef Name="GameID" />
           </Key>
@@ -101,7 +101,7 @@
           <Property Name="UserPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
         <Association Name="FK_Teams_GameID">
-          <End Role="Games" Type="GameTrackerModel.Games" Multiplicity="1" />
+          <End Role="Games" Type="GameTrackerModel.Game" Multiplicity="1" />
           <End Role="Teams" Type="GameTrackerModel.Teams" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Games">
@@ -113,11 +113,11 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="DefaultConnection" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Games1" EntityType="GameTrackerModel.Games" />
+          <EntitySet Name="Games" EntityType="GameTrackerModel.Game" />
           <EntitySet Name="Teams1" EntityType="GameTrackerModel.Teams" />
           <EntitySet Name="Users1" EntityType="GameTrackerModel.Users" />
           <AssociationSet Name="FK_Teams_GameID" Association="Self.FK_Teams_GameID">
-            <End Role="Games" EntitySet="Games1" />
+            <End Role="Games" EntitySet="Games" />
             <End Role="Teams" EntitySet="Teams1" />
           </AssociationSet>
         </EntityContainer>
@@ -127,8 +127,8 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="GameTrackerModelStoreContainer" CdmEntityContainer="DefaultConnection">
-          <EntitySetMapping Name="Games1">
-            <EntityTypeMapping TypeName="GameTrackerModel.Games">
+          <EntitySetMapping Name="Games">
+            <EntityTypeMapping TypeName="GameTrackerModel.Game">
               <MappingFragment StoreEntitySet="Games">
                 <ScalarProperty Name="TotalScore" ColumnName="TotalScore" />
                 <ScalarProperty Name="GameWinner" ColumnName="GameWinner" />

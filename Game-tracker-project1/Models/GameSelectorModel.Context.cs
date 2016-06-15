@@ -25,7 +25,7 @@ namespace Game_tracker_project1.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Games> Games1 { get; set; }
+        public virtual DbSet<Game> Games { get; set; }
         public virtual DbSet<Teams> Teams1 { get; set; }
         public virtual DbSet<Users> Users1 { get; set; }
     }

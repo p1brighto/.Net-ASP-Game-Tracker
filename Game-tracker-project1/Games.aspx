@@ -19,10 +19,10 @@
                     <asp:TextBox runat="server" CssClass="form-control" ID="TotalScoreTextBox" placeholder="Total Score" required="true"></asp:TextBox>
                 </div>
                 <div class="form-group">
-                    <label class="control-label" for="EnrollmentDateTextBox">Event Date</label>
-                    <asp:TextBox runat="server" TextMode="Date" CssClass="form-control" ID="EnrollmentDateTextBox" placeholder="Enrollment Date Format: mm/dd/yyyy" required="true"></asp:TextBox>
+                    <label class="control-label" for="EventDateTextBox">Event Date</label>
+                    <asp:TextBox runat="server" TextMode="Date" CssClass="form-control" ID="EventDateTextBox" placeholder="Event Date Format: mm/dd/yyyy" required="true"></asp:TextBox>
                     <asp:RangeValidator ID="RangeValidator1" runat="server" ErrorMessage="Invalid Date! Format: mm/dd/yyyy"
-                        ControlToValidate="EnrollmentDateTextBox" MinimumValue="01/01/2000" MaximumValue="01/01/2999"
+                        ControlToValidate="EventDateTextBox" MinimumValue="01/01/2000" MaximumValue="01/01/2999"
                         Type="Date" Display="Dynamic" BackColor="Red" ForeColor="White" Font-Size="Large"></asp:RangeValidator>
                 </div>
                 <div class="text-right">

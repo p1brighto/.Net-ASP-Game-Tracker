@@ -10,7 +10,7 @@
 namespace Game_tracker_project1 {
     
     
-    public partial class Default {
+    public partial class Dashboard {
         
         /// <summary>
         /// WeekNoLabel control.

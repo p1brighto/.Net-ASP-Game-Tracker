@@ -12,10 +12,10 @@ namespace Game_tracker_project1.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Games
+    public partial class Game
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Games()
+        public Game()
         {
             this.Teams = new HashSet<Teams>();
         }

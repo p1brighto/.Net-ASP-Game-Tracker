@@ -35,16 +35,17 @@ namespace Game_tracker_project1
             using (DefaultConnection db = new DefaultConnection())
             {
                 // populate a student instance with the StudentID from the URL parameter
-                Games updatedGame= (from game in db.Games1
-                                          where game.GameID == GamseID
-                                        select game).FirstOrDefault();
+                Game updatedGame= (from game in db.Games
+                                          where game.GameID == GameID
+                                    select game).FirstOrDefault();
 
                 // map the student properties to the form controls
                 if (updatedGame != null)
                 {
                     GameNameTextBox.Text = updatedGame.GameName;
                     GameDescTextBox.Text = updatedGame.GameDesc;
-                    EnrollmentDateTextBox.Text = updatedStudent.EnrollmentDate.ToString("yyyy-MM-dd");
+                    TotalScoreTextBox.Text = updatedGame.TotalScore.ToString();
+                    EventDateTextBox.Text = updatedGame.EventDate.ToString("yyyy-MM-dd");
                 }
             }
         }
@@ -56,7 +57,46 @@ namespace Game_tracker_project1
 
         protected void SaveButton_Click(object sender, EventArgs e)
         {
+            // Use EF to connect to the server
+            using (DefaultConnection db = new DefaultConnection())
+            {
+                // use the Department model to create a new department object and
+                // save a new record
+                Game newGame = new Game();
 
+                int GameID = 0;
+
+                if (Request.QueryString.Count > 0)
+                {
+                    // get the id from url
+                    GameID = Convert.ToInt32(Request.QueryString["GameID"]);
+
+                    // get the current department from EF DB
+                    newGame = (from game in db.Games
+                               where game.GameID == GameID
+                               select game).FirstOrDefault();
+                }
+
+                // add form data to the new department record
+                newGame.GameName = GameNameTextBox.Text;
+                newGame.GameDesc = GameDescTextBox.Text;
+                newGame.WeekNo = 5;
+                newGame.EventDate = Convert.ToDateTime(EventDateTextBox.Text);
+                newGame.GameWinner = "";
+                newGame.TotalScore = 8;
+                // use LINQ to ADO.NET to add / insert new department into the database
+                // check to see if a new department is being added
+                if (GameID == 0)
+                {
+                    db.Games.Add(newGame);
+                }
+
+                // save our changes
+                db.SaveChanges();
+
+                // Redirect back to the updated Departments page
+                Response.Redirect("~/Dashboard.aspx");
+            }
         }
     }
 }
