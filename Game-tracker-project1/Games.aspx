@@ -27,8 +27,8 @@
                     <asp:TextBox runat="server" CssClass="form-control" ID="Team1ScoreTextBox" placeholder="Score of the Team-1" required="true"></asp:TextBox>
                 </div>
                  <div class="form-group">
-                    <label class="control-label" for="Team1TextBox">Team 2</label>
-                    <asp:TextBox runat="server" CssClass="form-control" ID="TextBox1" placeholder="Name of the Team-1" required="true"></asp:TextBox>
+                    <label class="control-label" for="Team2TextBox">Team 2</label>
+                    <asp:TextBox runat="server" CssClass="form-control" ID="Team2TextBox" placeholder="Name of the Team-2" required="true"></asp:TextBox>
                 </div>
                 <div class="form-group">
                     <label class="control-label" for="Team2DescTextBox">Team 2 Description</label>

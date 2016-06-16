@@ -27,12 +27,53 @@ namespace Game_tracker_project1
             if (!IsPostBack)
             {
                 //assigning the initial coloumn and the direction that needs to be sorted
-                Session["SortColumn"] = "WeekNo";
+                Session["SortColumn"] = "GameID";
                 Session["SortDirection"] = "ASC";
                 // Get the games list
                 this.GetGames();
             }
+            if (Request.QueryString.Count > 0)
+            {
+                this.GetTeams();
+            }
         }
+        /**
+        * <summary>
+        * This method pupulate the Gridview with teams list
+        * </summary>
+        * 
+        * @method GetTeams
+        * @returns
+        * */
+        protected void GetTeams()
+       {
+           string sortString = Session["SortColumn"].ToString() + " " + Session["SortDirection"].ToString();
+
+           // connect to EF
+           using (DefaultConnection db = new DefaultConnection())
+           {
+               // populate the form with existing gmae data from the db
+               int GameID = Convert.ToInt32(Request.QueryString["GameID"]);
+
+               // query the games Table using EF and LINQ
+               var Teams = (from allTeam in db.Teams
+                            where allTeam.GameID == GameID
+                            select allTeam);
+
+               // bind the result to the GridView
+               TeamsGridView.DataSource = Teams.AsQueryable().OrderBy(sortString).ToList();
+               TeamsGridView.DataBind();
+           }
+       }
+
+       /**
+        * <summary>
+        * This method pupulate the Gridview with games list
+        * </summary>
+        * 
+        * @method GetGames
+        * @returns {void}
+        */
         protected void GetGames()
         {
             string sortString = Session["SortColumn"].ToString() + " " + Session["SortDirection"].ToString();
@@ -41,7 +82,7 @@ namespace Game_tracker_project1
             using (DefaultConnection db = new DefaultConnection())
             {
                 // query the games Table using EF and LINQ
-                var Games = (from allGames in db.Games
+                var Games = (from allGames in db.Games 
                                    select allGames);
 
                 // bind the result to the GridView
@@ -113,6 +154,48 @@ namespace Game_tracker_project1
                     }
                 }
             }
+        }
+
+        protected void TeamsGridView_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (IsPostBack)
+            {
+                if (e.Row.RowType == DataControlRowType.Header)//check to see if the click is on the header row
+                {
+                    LinkButton linkbutton = new LinkButton();
+                    //go throgh each coloumn to check which one need to sort
+                    for (int i = 0; i < TeamsGridView.Columns.Count; i++)
+                    {
+                        //check coloumn
+                        if (TeamsGridView.Columns[i].SortExpression == Session["SortColumn"].ToString())
+                        {
+                            //check direction
+                            if (Session["SortDirection"].ToString() == "ASC")
+                            {
+                                linkbutton.Text = "<i class='fa fa-caret-down fa-lg'></i>";
+                            }
+                            else
+                            {
+                                linkbutton.Text = "<i class='fa fa-caret-up fa-lg'></i>";
+                            }
+                            //adding the fontawsome up or down icon to the coloumn that need to sort 
+                            e.Row.Cells[i].Controls.Add(linkbutton);
+                        }
+                    }
+                }
+            }
+        }
+
+        protected void TeamsGridView_Sorting(object sender, GridViewSortEventArgs e)
+        {
+            //get the coloumb to sort by
+            Session["SortColumn"] = e.SortExpression;
+
+            //refresh the grid
+            this.GetTeams();
+
+            //toggle the direction
+            Session["SortDirection"] = Session["SortDirection"].ToString() == "ASC" ? "DESC" : "ASC";
         }
     }
 }

@@ -2,14 +2,15 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container">
         <div class="row">
-            <div class=" col-md-6">
+            <div class=" col-md-7">
                 <h1>Games List</h1>
                 <a href="Games.aspx" class="btn btn-success btn-sm"><i class="fa fa-plus"></i> Add Game</a>
                 <asp:GridView runat="server"  CssClass="table table-bordered table-striped table-hover" ID="GamesGridView" DataKeyNames="GameID" AutoGenerateColumns="false"
                      AllowSorting="true" OnSorting="GamesGridView_Sorting" OnRowDataBound="GamesGridView_RowDataBound"  OnRowDeleting="GamesGridView_RowDeleting">
                     <Columns>
                         <asp:BoundField DataField="GameID" HeaderText="Game ID" Visible="true" SortExpression="GameID"/>
-                        <asp:BoundField DataField="GameName" HeaderText="Game Name" Visible="true" SortExpression="GameName"/>
+                        <asp:HyperLinkField HeaderText="Name" DataTextField="GameName" SortExpression="GameName" NavigateUrl="~/Dashboard.aspx.cs"
+                            DataNavigateUrlFields="GameID" DataNavigateUrlFormatString="Dashboard.aspx?GameID={0}"/>                        
                         <asp:BoundField DataField="GameDesc" HeaderText="Game Description" Visible="true" SortExpression="GameDesc"/>
                         <asp:BoundField DataField="GameWinner" HeaderText="Game Winner" Visible="true" SortExpression="GameWinner"/>
                         <asp:BoundField DataField="TotalScore" HeaderText="Total Score" Visible="true" SortExpression="TotalScore"/>
@@ -20,6 +21,18 @@
                             ControlStyle-CssClass="btn btn-primary btn-sm"/>
                         <asp:CommandField HeaderText="Delete" DeleteText="<i class='fa fa-trash-o fa-lg'></i>Delete" ShowDeleteButton="true" 
                             ButtonType="Link" ControlStyle-CssClass="btn btn-danger btn-sm" />
+                    </Columns>
+                </asp:GridView>
+            </div> 
+            <div class=" col-md-3">
+                <h1>Teams List</h1>
+                <asp:GridView runat="server"  CssClass="table table-bordered table-striped table-hover" ID="TeamsGridView" DataKeyNames="TeamID" AutoGenerateColumns="false"
+                     AllowSorting="true" OnSorting="TeamsGridView_Sorting" OnRowDataBound="TeamsGridView_RowDataBound">
+                    <Columns>
+                        <asp:BoundField DataField="TeamID" HeaderText="Team ID" Visible="true" SortExpression="TeamID"/>
+                        <asp:BoundField DataField="TeamName" HeaderText="Team Name" Visible="true" SortExpression="TeamName" />                    
+                        <asp:BoundField DataField="TeamDesc" HeaderText="Team Description" Visible="true" SortExpression="TeamDesc"/>
+                        <asp:BoundField DataField="TeamScore" HeaderText="Score" Visible="true" SortExpression="TeamScore"/>
                     </Columns>
                 </asp:GridView>
             </div> 

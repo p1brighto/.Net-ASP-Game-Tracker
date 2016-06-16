@@ -23,6 +23,7 @@
           </Key>
           <Property Name="TeamID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="GameID" Type="int" Nullable="false" />
+          <Property Name="TeamNo" Type="int" Nullable="false" />
           <Property Name="TeamName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="TeamDesc" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="TeamScore" Type="int" Nullable="false" />
@@ -87,6 +88,7 @@
           <Property Name="TeamScore" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Game" Relationship="Self.FK_Teams_GameID" FromRole="Teams" ToRole="Games" />
           <Property Name="TeamDesc" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TeamNo" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -143,6 +145,7 @@
           <EntitySetMapping Name="Teams">
             <EntityTypeMapping TypeName="GameTrackerModel.Team">
               <MappingFragment StoreEntitySet="Teams">
+                <ScalarProperty Name="TeamNo" ColumnName="TeamNo" />
                 <ScalarProperty Name="TeamDesc" ColumnName="TeamDesc" />
                 <ScalarProperty Name="TeamID" ColumnName="TeamID" />
                 <ScalarProperty Name="GameID" ColumnName="GameID" />

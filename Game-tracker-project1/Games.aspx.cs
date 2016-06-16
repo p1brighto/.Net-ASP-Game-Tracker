@@ -29,6 +29,14 @@ namespace Game_tracker_project1
                 this.GetGames();
             }
         }
+        /**
+         * <summary>
+         * This method pupulate the form with all the details
+         * </summary>
+         * 
+         * @method GetGames
+         * @returns {void}
+         */
         protected void GetGames()
         {
             // populate the form with existing gmae data from the db
@@ -41,14 +49,28 @@ namespace Game_tracker_project1
                 Game updatedGame= (from game in db.Games
                                           where game.GameID == GameID
                                     select game).FirstOrDefault();
+                Team updatedTeam1 = (from team in db.Teams
+                                    where team.GameID == GameID where team.TeamNo==1
+                                    select team).FirstOrDefault();
+                Team updatedTeam2 = (from team in db.Teams
+                                     where team.GameID == GameID
+                                     where team.TeamNo == 2
+                                     select team).FirstOrDefault();
 
                 // map the game properties to the form controls
                 if (updatedGame != null)
                 {
                     GameNameTextBox.Text = updatedGame.GameName;
                     GameDescTextBox.Text = updatedGame.GameDesc;
-                    Team1ScoreTextBox.Text = updatedGame.TotalScore.ToString();
                     EventDateTextBox.Text = updatedGame.EventDate.ToString("yyyy-MM-dd");
+
+                    Team1TextBox.Text = updatedTeam1.TeamName;
+                    Team1DescTextBox.Text = updatedTeam1.TeamDesc;
+                    Team1ScoreTextBox.Text = updatedTeam1.TeamScore.ToString();
+
+                    Team2TextBox.Text = updatedTeam2.TeamName;
+                    Team2DescTextBox.Text = updatedTeam2.TeamDesc;
+                    Team2ScoreTextBox.Text = updatedTeam2.TeamScore.ToString();
                 }
             }
         }
@@ -84,7 +106,9 @@ namespace Game_tracker_project1
                 // use the Game model to create a new Games object and
                 // save a new record
                 Game newGame = new Game();
-                Team newTeam1 = new Team();
+                Team newTeam1, newTeam2;
+                newTeam1 = new Team();
+                newTeam2 = new Team();
 
                 int GameID = 0;
 
@@ -94,23 +118,54 @@ namespace Game_tracker_project1
                     GameID = Convert.ToInt32(Request.QueryString["GameID"]);
 
                     // get the current ames from EF DB
-                    newGame = (from game in db.Games
-                               where game.GameID == GameID
+                    newGame = (from game in db.Games 
+                               where game.GameID == GameID  
                                select game).FirstOrDefault();
-                }
 
+                    newTeam1= (from team in db.Teams
+                              where team.GameID == GameID where team.TeamNo == 1
+                              select team).FirstOrDefault();
+
+                    newTeam2 = (from team in db.Teams
+                                where team.GameID == GameID
+                                where team.TeamNo == 2
+                                select team).FirstOrDefault();
+                }
+                //convert scores
+                int score1 = Convert.ToInt32(Team1ScoreTextBox.Text),score2 = Convert.ToInt32(Team2ScoreTextBox.Text);
                 // add form data to the new Game record
                 newGame.GameName = GameNameTextBox.Text;
                 newGame.GameDesc = GameDescTextBox.Text;
                 newGame.WeekNo = this.GetWeekNo();
                 newGame.EventDate = Convert.ToDateTime(EventDateTextBox.Text);
-                newGame.GameWinner = "";
-                newGame.TotalScore = 8;
+                if (score1 > score2)
+                {
+                    newGame.GameWinner = Team1TextBox.Text;
+                }
+                else
+                {
+                    newGame.GameWinner = Team2TextBox.Text;
+                }
+                newGame.TotalScore = score1+score2;
+
+                // add form data to the  Team1 record
+                newTeam1.TeamName = Team1TextBox.Text;
+                newTeam1.TeamDesc = Team1DescTextBox.Text;
+                newTeam1.TeamScore = score1;
+                newTeam1.TeamNo = 1;
+
+                // add form data to the  Team2 record
+                newTeam2.TeamName = Team2TextBox.Text;
+                newTeam2.TeamDesc = Team2DescTextBox.Text;
+                newTeam2.TeamScore = score2;
+                newTeam2.TeamNo = 2;
                 // use LINQ to ADO.NET to add / insert new game into the database
                 // check to see if a new game is being added
                 if (GameID == 0)
                 {
                     db.Games.Add(newGame);
+                    db.Teams.Add(newTeam1);
+                    db.Teams.Add(newTeam2);
                 }
 
                 // save our changes

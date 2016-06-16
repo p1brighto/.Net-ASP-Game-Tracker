@@ -31,14 +31,46 @@ namespace Game_tracker_project1
                 this.GetWeekNo();//initialise the current week number
 
                 //assigning the initial coloumn and the direction that needs to be sorted
-                Session["SortColumn"] = "GameName";
+                Session["SortColumn"] = "GameID";
                 Session["SortDirection"] = "ASC";
 
                 // Get the games list by the current week
                 DateSelectorCalendar.SelectedDate = Convert.ToDateTime("01/01/0001");//deselect the date in calender
                 this.GetGames(false);//show games by week
             }
+            if (Request.QueryString.Count > 0)
+            {
+                // get the ID from the url
+                this.GetTeams(Convert.ToInt32(Request.QueryString["GameID"]));
+            }
+
         }
+        /**
+        * <summary>
+        * This method pupulate the Gridview with teams list
+        * </summary>
+        * 
+        * @method GetTeams
+        * @returns
+        * */
+        protected void GetTeams(int GameID)
+        {
+            string sortString = Session["SortColumn"].ToString() + " " + Session["SortDirection"].ToString();
+
+            // connect to EF
+            using (DefaultConnection db = new DefaultConnection())
+            {
+                // query the games Table using EF and LINQ
+                var Teams = (from allTeam in db.Teams
+                             where allTeam.GameID == GameID
+                             select allTeam);
+
+                // bind the result to the GridView
+                TeamsGridView.DataSource = Teams.AsQueryable().OrderBy(sortString).ToList();
+                TeamsGridView.DataBind();
+            }
+        }
+
         /**
          * <summary>
          * This method pupulate the dropdownlist for the weeek number
@@ -58,6 +90,8 @@ namespace Game_tracker_project1
         {
             this.GetWeekNo();//initialise the selected_week match to the calender
             this.GetGames(true);//get games by date
+            this.GetTeams(0);//reset the value
+
         }
         /**
          * <summary>
@@ -170,6 +204,50 @@ namespace Game_tracker_project1
             //shows the game list in the week selected
             this.GetGames(false);
             DateSelectorCalendar.SelectedDate= Convert.ToDateTime("01/01/0001");//deselect the date in calender
+            this.GetTeams(0);//reset value
+        }
+
+        protected void TeamsGridView_Sorting(object sender, GridViewSortEventArgs e)
+        {
+            //get the coloumb to sort by
+            Session["SortColumn"] = e.SortExpression;
+
+            //refresh the grid
+            this.GetTeams(Convert.ToInt32(Request.QueryString["GameID"]));
+
+            //toggle the direction
+            Session["SortDirection"] = Session["SortDirection"].ToString() == "ASC" ? "DESC" : "ASC";
+        }
+
+        protected void TeamsGridView_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+
+            if (IsPostBack)
+            {
+                if (e.Row.RowType == DataControlRowType.Header)//check to see if the click is on the header row
+                {
+                    LinkButton linkbutton = new LinkButton();
+                    //go throgh each coloumn to check which one need to sort
+                    for (int i = 0; i < TeamsGridView.Columns.Count; i++)
+                    {
+                        //check coloumn
+                        if (TeamsGridView.Columns[i].SortExpression == Session["SortColumn"].ToString())
+                        {
+                            //check direction
+                            if (Session["SortDirection"].ToString() == "ASC")
+                            {
+                                linkbutton.Text = "<i class='fa fa-caret-down fa-lg'></i>";
+                            }
+                            else
+                            {
+                                linkbutton.Text = "<i class='fa fa-caret-up fa-lg'></i>";
+                            }
+                            //adding the fontawsome up or down icon to the coloumn that need to sort 
+                            e.Row.Cells[i].Controls.Add(linkbutton);
+                        }
+                    }
+                }
+            }
         }
     }
 }
