@@ -22,13 +22,10 @@ namespace Game_tracker_project1
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            DateSelector.SelectedDate = DateTime.Today;//initial date 
-            this.GetWeekNo();
-
             //if  loading page for the first time populate the Games grid
             if (!IsPostBack)
             {
-                Session["SortColumn"] = "GameName";
+                Session["SortColumn"] = "WeekNo";
                 Session["SortDirection"] = "ASC";
                 // Get the games list
                 this.GetGames();
@@ -43,7 +40,6 @@ namespace Game_tracker_project1
             {
                 // query the departments Table using EF and LINQ
                 var Games = (from allGames in db.Games
-                             where allGames.EventDate==DateSelector.SelectedDate
                                    select allGames);
 
                 // bind the result to the GridView
@@ -51,23 +47,6 @@ namespace Game_tracker_project1
                 GamesGridView.DataBind();
             }
         }
-        protected void DateSelector_SelectionChanged(object sender, EventArgs e)
-        {
-            this.GetWeekNo();
-            this.GetGames();
-        }
-
-        protected void GetWeekNo()
-        {
-            //getting the current date and calculating the week number
-            int weeknum = CultureInfo.CurrentCulture.Calendar.GetWeekOfYear(
-            DateSelector.SelectedDate,
-            CultureInfo.CurrentCulture.DateTimeFormat.CalendarWeekRule,
-            CultureInfo.CurrentCulture.DateTimeFormat.FirstDayOfWeek);
-            //giving the value to the label
-            WeekNoLabel.Text ="Current Week Number:"+ weeknum.ToString();
-        }
-
         protected void GamesGridView_Sorting(object sender, GridViewSortEventArgs e)
         {
             //get the coloumb to sort by

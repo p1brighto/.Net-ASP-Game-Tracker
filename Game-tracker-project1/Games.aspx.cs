@@ -8,11 +8,12 @@ using System.Web.UI.WebControls;
 // using statements that are required to connect to EF DB
 using Game_tracker_project1.Models;
 using System.Web.ModelBinding;
+using System.Globalization;
 /**
- * @author: Brighto Paul(2003003805),Kuldeepsingh Jeewoololl(200304689)
- * @date: June 8, 2016
- * version:1.2
- */
+* @author: Brighto Paul(2003003805),Kuldeepsingh Jeewoololl(200304689)
+* @date: June 8, 2016
+* version:1.2
+*/
 
 
 namespace Game_tracker_project1
@@ -54,7 +55,17 @@ namespace Game_tracker_project1
             //Redirect  back to Studeents page
             Response.Redirect("~/Default.aspx");
         }
-
+        protected int GetWeekNo()
+        {
+            //calculating the week number
+            int weeknum = CultureInfo.CurrentCulture.Calendar.GetWeekOfYear(
+            Convert.ToDateTime(EventDateTextBox.Text),
+            CultureInfo.CurrentCulture.DateTimeFormat.CalendarWeekRule,
+            CultureInfo.CurrentCulture.DateTimeFormat.FirstDayOfWeek);
+            weeknum--;
+            //returning value
+            return weeknum;
+        }
         protected void SaveButton_Click(object sender, EventArgs e)
         {
             // Use EF to connect to the server
@@ -80,7 +91,7 @@ namespace Game_tracker_project1
                 // add form data to the new department record
                 newGame.GameName = GameNameTextBox.Text;
                 newGame.GameDesc = GameDescTextBox.Text;
-                newGame.WeekNo = 5;
+                newGame.WeekNo = this.GetWeekNo();
                 newGame.EventDate = Convert.ToDateTime(EventDateTextBox.Text);
                 newGame.GameWinner = "";
                 newGame.TotalScore = 8;
