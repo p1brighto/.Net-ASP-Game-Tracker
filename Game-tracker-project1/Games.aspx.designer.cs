@@ -31,13 +31,58 @@ namespace Game_tracker_project1 {
         protected global::System.Web.UI.WebControls.TextBox GameDescTextBox;
         
         /// <summary>
-        /// TotalScoreTextBox control.
+        /// Team1TextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TotalScoreTextBox;
+        protected global::System.Web.UI.WebControls.TextBox Team1TextBox;
+        
+        /// <summary>
+        /// Team1DescTextBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox Team1DescTextBox;
+        
+        /// <summary>
+        /// Team1ScoreTextBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox Team1ScoreTextBox;
+        
+        /// <summary>
+        /// TextBox1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        
+        /// <summary>
+        /// Team2DescTextBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox Team2DescTextBox;
+        
+        /// <summary>
+        /// Team2ScoreTextBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox Team2ScoreTextBox;
         
         /// <summary>
         /// EventDateTextBox control.

@@ -205,7 +205,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GameSelectorModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\Teams.cs">
+    <Compile Include="Models\Team.cs">
       <DependentUpon>GameSelectorModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Users.cs">

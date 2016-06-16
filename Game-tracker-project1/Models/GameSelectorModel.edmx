@@ -77,7 +77,7 @@
           <Property Name="GameWinner" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="TotalScore" Type="Int32" Nullable="false" />
         </EntityType>
-        <EntityType Name="Teams">
+        <EntityType Name="Team">
           <Key>
             <PropertyRef Name="TeamID" />
           </Key>
@@ -102,7 +102,7 @@
         </EntityType>
         <Association Name="FK_Teams_GameID">
           <End Role="Games" Type="GameTrackerModel.Game" Multiplicity="1" />
-          <End Role="Teams" Type="GameTrackerModel.Teams" Multiplicity="*" />
+          <End Role="Teams" Type="GameTrackerModel.Team" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Games">
               <PropertyRef Name="GameID" />
@@ -114,11 +114,11 @@
         </Association>
         <EntityContainer Name="DefaultConnection" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Games" EntityType="GameTrackerModel.Game" />
-          <EntitySet Name="Teams1" EntityType="GameTrackerModel.Teams" />
+          <EntitySet Name="Teams" EntityType="GameTrackerModel.Team" />
           <EntitySet Name="Users1" EntityType="GameTrackerModel.Users" />
           <AssociationSet Name="FK_Teams_GameID" Association="Self.FK_Teams_GameID">
             <End Role="Games" EntitySet="Games" />
-            <End Role="Teams" EntitySet="Teams1" />
+            <End Role="Teams" EntitySet="Teams" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -140,8 +140,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Teams1">
-            <EntityTypeMapping TypeName="GameTrackerModel.Teams">
+          <EntitySetMapping Name="Teams">
+            <EntityTypeMapping TypeName="GameTrackerModel.Team">
               <MappingFragment StoreEntitySet="Teams">
                 <ScalarProperty Name="TeamDesc" ColumnName="TeamDesc" />
                 <ScalarProperty Name="TeamID" ColumnName="TeamID" />

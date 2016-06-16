@@ -3,10 +3,11 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4">
-                <h1>Calender</h1>
+                <h4>Show by Week Number</h4>
                     <asp:DropDownList ID="WeekNoDropDownList" AutoPostBack="true" CssClass="btn btn-default btn-sm dropdown-toogle" OnTextChanged="WeekNoDropDownList_TextChanged" runat="server">
-                </asp:DropDownList>
-                <asp:Calendar ID="DateSelectorCalendar" OnSelectionChanged="DateSelectorCalendar_SelectionChanged" runat="server"></asp:Calendar>
+                    </asp:DropDownList>
+                <h4>Show by date</h4>
+                    <asp:Calendar ID="DateSelectorCalendar" OnSelectionChanged="DateSelectorCalendar_SelectionChanged" runat="server"></asp:Calendar>
             </div>
             <div class=" col-md-6">
                 <h1>Games List</h1>

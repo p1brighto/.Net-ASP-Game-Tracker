@@ -12,7 +12,7 @@ namespace Game_tracker_project1.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Teams
+    public partial class Team
     {
         public int TeamID { get; set; }
         public int GameID { get; set; }
