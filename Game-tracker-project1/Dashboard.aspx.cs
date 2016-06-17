@@ -21,6 +21,7 @@ namespace Game_tracker_project1
 {
     public partial class Default : System.Web.UI.Page
     {
+        private int selectedRow;
         protected void Page_Load(object sender, EventArgs e)
         {
             //if  loading page for the first time populate the Games grid
@@ -31,10 +32,6 @@ namespace Game_tracker_project1
                 Session["SortDirection"] = "ASC";
                 // Get the games list
                 this.GetGames();
-            }
-            if (Request.QueryString.Count > 0)
-            {
-                this.GetTeams();
             }
         }
         /**
@@ -47,21 +44,16 @@ namespace Game_tracker_project1
         * */
         protected void GetTeams()
        {
-           string sortString = Session["SortColumn"].ToString() + " " + Session["SortDirection"].ToString();
-
            // connect to EF
            using (DefaultConnection db = new DefaultConnection())
            {
-               // populate the form with existing gmae data from the db
-               int GameID = Convert.ToInt32(Request.QueryString["GameID"]);
-
                // query the games Table using EF and LINQ
                var Teams = (from allTeam in db.Teams
-                            where allTeam.GameID == GameID
+                            where allTeam.GameID == selectedRow
                             select allTeam);
 
                // bind the result to the GridView
-               TeamsGridView.DataSource = Teams.AsQueryable().OrderBy(sortString).ToList();
+               TeamsGridView.DataSource = Teams.AsQueryable().ToList();
                TeamsGridView.DataBind();
            }
        }
@@ -155,47 +147,14 @@ namespace Game_tracker_project1
                 }
             }
         }
-
-        protected void TeamsGridView_RowDataBound(object sender, GridViewRowEventArgs e)
+        protected void GamesGridView_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            if (IsPostBack)
+            if (e.CommandName == "GameID")
             {
-                if (e.Row.RowType == DataControlRowType.Header)//check to see if the click is on the header row
-                {
-                    LinkButton linkbutton = new LinkButton();
-                    //go throgh each coloumn to check which one need to sort
-                    for (int i = 0; i < TeamsGridView.Columns.Count; i++)
-                    {
-                        //check coloumn
-                        if (TeamsGridView.Columns[i].SortExpression == Session["SortColumn"].ToString())
-                        {
-                            //check direction
-                            if (Session["SortDirection"].ToString() == "ASC")
-                            {
-                                linkbutton.Text = "<i class='fa fa-caret-down fa-lg'></i>";
-                            }
-                            else
-                            {
-                                linkbutton.Text = "<i class='fa fa-caret-up fa-lg'></i>";
-                            }
-                            //adding the fontawsome up or down icon to the coloumn that need to sort 
-                            e.Row.Cells[i].Controls.Add(linkbutton);
-                        }
-                    }
-                }
+                selectedRow = Convert.ToInt32(GamesGridView.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["GameID"]);
+                TeamsDiv.Visible = true;
+                this.GetTeams();
             }
-        }
-
-        protected void TeamsGridView_Sorting(object sender, GridViewSortEventArgs e)
-        {
-            //get the coloumb to sort by
-            Session["SortColumn"] = e.SortExpression;
-
-            //refresh the grid
-            this.GetTeams();
-
-            //toggle the direction
-            Session["SortDirection"] = Session["SortDirection"].ToString() == "ASC" ? "DESC" : "ASC";
         }
     }
 }

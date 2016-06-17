@@ -12,11 +12,9 @@
             <div class=" col-md-5">
                 <h1>Games List</h1>
                 <asp:GridView runat="server"  CssClass="table table-bordered table-striped table-hover" ID="GamesGridView" DataKeyNames="GameID" AutoGenerateColumns="false"
-                     AllowSorting="true" OnSorting="GamesGridView_Sorting" OnRowDataBound="GamesGridView_RowDataBound">
+                     AllowSorting="true" OnSorting="GamesGridView_Sorting" OnRowDataBound="GamesGridView_RowDataBound" OnRowCommand="GamesGridView_RowCommand">
                     <Columns>
-                        <asp:HyperLinkField HeaderText="Name" DataTextField="GameName" SortExpression="GameName" NavigateUrl="~/Default.aspx.cs"
-                            DataNavigateUrlFields="GameID" DataNavigateUrlFormatString="Default.aspx?GameID={0}"/>
-                        <asp:BoundField DataField="GameID" HeaderText="Game ID" Visible="false"/>
+                        <asp:ButtonField CommandName="GameID"  DataTextField="GameName" HeaderText="Name" SortExpression="GameName"/>
                         <asp:BoundField DataField="GameDesc" HeaderText="Description" Visible="true" SortExpression="GameDesc"/>
                         <asp:BoundField DataField="GameWinner" HeaderText="Winner" Visible="true" SortExpression="GameWinner"/>
                         <asp:BoundField DataField="TotalScore" HeaderText="Total Score" Visible="true" SortExpression="TotalScore"/>
@@ -25,15 +23,15 @@
                     </Columns>
                 </asp:GridView>
             </div>
-            <div class=" col-md-3">
+            <div id="TeamsDiv" visible="false" runat="server" class=" col-md-3" >
                 <h1>Teams List</h1>
                 <asp:GridView runat="server"  CssClass="table table-bordered table-striped table-hover" ID="TeamsGridView" DataKeyNames="TeamID" AutoGenerateColumns="false"
-                     AllowSorting="true" OnSorting="TeamsGridView_Sorting" OnRowDataBound="TeamsGridView_RowDataBound">
+                     AllowSorting="true">
                     <Columns>
-                        <asp:BoundField DataField="TeamID" HeaderText="Team ID" Visible="false"/>
-                        <asp:BoundField DataField="TeamName" HeaderText="Team Name" Visible="true" SortExpression="TeamName" />                    
-                        <asp:BoundField DataField="TeamDesc" HeaderText="Team Description" Visible="true" SortExpression="TeamDesc"/>
-                        <asp:BoundField DataField="TeamScore" HeaderText="Score" Visible="true" SortExpression="TeamScore"/>
+                        <asp:BoundField DataField="TeamID" HeaderStyle-BackColor="Red" HeaderText="Team ID" Visible="false"/>
+                        <asp:BoundField DataField="TeamName" HeaderStyle-BackColor="Red" HeaderText="Team Name" Visible="true"  />                    
+                        <asp:BoundField DataField="TeamDesc" HeaderStyle-BackColor="Red" HeaderText="Team Description" Visible="true"/>
+                        <asp:BoundField DataField="TeamScore" HeaderStyle-BackColor="Red" HeaderText="Score" Visible="true"/>
                     </Columns>
                 </asp:GridView>
             </div>  
