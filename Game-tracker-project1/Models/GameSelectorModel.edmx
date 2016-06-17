@@ -10,10 +10,12 @@
             <PropertyRef Name="GameID" />
           </Key>
           <Property Name="GameID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GameCategory" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="GameName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="GameDesc" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="GameWinner" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="TotalScore" Type="int" Nullable="false" />
+          <Property Name="SpectatorsNo" Type="int" Nullable="false" />
           <Property Name="WeekNo" Type="int" Nullable="false" />
           <Property Name="EventDate" Type="date" Nullable="false" />
         </EntityType>
@@ -27,6 +29,7 @@
           <Property Name="TeamName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="TeamDesc" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="TeamScore" Type="int" Nullable="false" />
+          <Property Name="TotalScoreAllowed" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -77,6 +80,8 @@
           <Property Name="GameDesc" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="GameWinner" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="TotalScore" Type="Int32" Nullable="false" />
+          <Property Name="GameCategory" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SpectatorsNo" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Team">
           <Key>
@@ -89,6 +94,7 @@
           <NavigationProperty Name="Game" Relationship="Self.FK_Teams_GameID" FromRole="Teams" ToRole="Games" />
           <Property Name="TeamDesc" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="TeamNo" Type="Int32" Nullable="false" />
+          <Property Name="TotalScoreAllowed" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -132,6 +138,8 @@
           <EntitySetMapping Name="Games">
             <EntityTypeMapping TypeName="GameTrackerModel.Game">
               <MappingFragment StoreEntitySet="Games">
+                <ScalarProperty Name="SpectatorsNo" ColumnName="SpectatorsNo" />
+                <ScalarProperty Name="GameCategory" ColumnName="GameCategory" />
                 <ScalarProperty Name="TotalScore" ColumnName="TotalScore" />
                 <ScalarProperty Name="GameWinner" ColumnName="GameWinner" />
                 <ScalarProperty Name="GameDesc" ColumnName="GameDesc" />
@@ -145,6 +153,7 @@
           <EntitySetMapping Name="Teams">
             <EntityTypeMapping TypeName="GameTrackerModel.Team">
               <MappingFragment StoreEntitySet="Teams">
+                <ScalarProperty Name="TotalScoreAllowed" ColumnName="TotalScoreAllowed" />
                 <ScalarProperty Name="TeamNo" ColumnName="TeamNo" />
                 <ScalarProperty Name="TeamDesc" ColumnName="TeamDesc" />
                 <ScalarProperty Name="TeamID" ColumnName="TeamID" />

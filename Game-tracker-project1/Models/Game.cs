@@ -27,6 +27,8 @@ namespace Game_tracker_project1.Models
         public string GameDesc { get; set; }
         public string GameWinner { get; set; }
         public int TotalScore { get; set; }
+        public string GameCategory { get; set; }
+        public int SpectatorsNo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Team> Teams { get; set; }

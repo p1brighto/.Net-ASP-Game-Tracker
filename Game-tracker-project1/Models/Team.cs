@@ -20,6 +20,7 @@ namespace Game_tracker_project1.Models
         public int TeamScore { get; set; }
         public string TeamDesc { get; set; }
         public int TeamNo { get; set; }
+        public int TotalScoreAllowed { get; set; }
     
         public virtual Game Game { get; set; }
     }

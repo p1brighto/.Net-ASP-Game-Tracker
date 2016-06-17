@@ -9,30 +9,19 @@
                 <h4>Show by date</h4>
                     <asp:Calendar ID="DateSelectorCalendar" OnSelectionChanged="DateSelectorCalendar_SelectionChanged" runat="server"></asp:Calendar>
             </div>
-            <div class=" col-md-5">
+            <div class=" col-md-8">
                 <h1>Games List</h1>
                 <asp:GridView runat="server"  CssClass="table table-bordered table-striped table-hover" ID="GamesGridView" DataKeyNames="GameID" AutoGenerateColumns="false"
-                     AllowSorting="true" OnSorting="GamesGridView_Sorting" OnRowDataBound="GamesGridView_RowDataBound" OnRowCommand="GamesGridView_RowCommand">
+                     AllowSorting="true" OnSorting="GamesGridView_Sorting" OnRowDataBound="GamesGridView_RowDataBound">
                     <Columns>
-                        <asp:ButtonField CommandName="GameID"  DataTextField="GameName" HeaderText="Name" SortExpression="GameName"/>
+                        <asp:BoundField DataField="GameName" HeaderText="Name" SortExpression="GameName"/>
                         <asp:BoundField DataField="GameDesc" HeaderText="Description" Visible="true" SortExpression="GameDesc"/>
                         <asp:BoundField DataField="GameWinner" HeaderText="Winner" Visible="true" SortExpression="GameWinner"/>
                         <asp:BoundField DataField="TotalScore" HeaderText="Total Score" Visible="true" SortExpression="TotalScore"/>
                         <asp:BoundField DataField="EventDate" HeaderText="Event date" Visible="true" SortExpression="EventDate" DataFormatString="{0:MMM dd, yyyy}"/>
                         <asp:BoundField DataField="WeekNo" HeaderText="Week Number" Visible="true" SortExpression="WeekNo"/>
-                    </Columns>
-                </asp:GridView>
-            </div>
-            <div id="TeamsDiv" visible="false" runat="server" class=" col-md-3" >
-                <h1>Teams List</h1>
-                <asp:GridView runat="server"  CssClass="table table-bordered table-striped table-hover" ID="TeamsGridView" DataKeyNames="TeamID" AutoGenerateColumns="false"
-                     AllowSorting="true">
-                    <Columns>
-                        <asp:BoundField DataField="TeamID" HeaderStyle-BackColor="Red" HeaderText="Team ID" Visible="false"/>
-                        <asp:BoundField DataField="TeamName" HeaderStyle-BackColor="Red" HeaderText="Team Name" Visible="true"  />                    
-                        <asp:BoundField DataField="TeamDesc" HeaderStyle-BackColor="Red" HeaderText="Team Description" Visible="true"/>
-                        <asp:BoundField DataField="TeamScore" HeaderStyle-BackColor="Red" HeaderText="Score" Visible="true"/>
-                    </Columns>
+                        <asp:HyperLinkField ControlStyle-CssClass="btn btn-primary btn-sm" Text="Teams" HeaderText="Teams List" NavigateUrl="~/Teams.aspx.cs" 
+                            DataNavigateUrlFields="GameID" DataNavigateUrlFormatString="Teams.aspx?GameID={0}" />                     </Columns>
                 </asp:GridView>
             </div>  
         </div>

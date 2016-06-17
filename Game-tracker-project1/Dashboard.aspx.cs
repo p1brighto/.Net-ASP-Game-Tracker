@@ -21,7 +21,6 @@ namespace Game_tracker_project1
 {
     public partial class Default : System.Web.UI.Page
     {
-        private int selectedRow;
         protected void Page_Load(object sender, EventArgs e)
         {
             //if  loading page for the first time populate the Games grid
@@ -33,31 +32,7 @@ namespace Game_tracker_project1
                 // Get the games list
                 this.GetGames();
             }
-        }
-        /**
-        * <summary>
-        * This method pupulate the Gridview with teams list
-        * </summary>
-        * 
-        * @method GetTeams
-        * @returns
-        * */
-        protected void GetTeams()
-       {
-           // connect to EF
-           using (DefaultConnection db = new DefaultConnection())
-           {
-               // query the games Table using EF and LINQ
-               var Teams = (from allTeam in db.Teams
-                            where allTeam.GameID == selectedRow
-                            select allTeam);
-
-               // bind the result to the GridView
-               TeamsGridView.DataSource = Teams.AsQueryable().ToList();
-               TeamsGridView.DataBind();
-           }
-       }
-
+        }       
        /**
         * <summary>
         * This method pupulate the Gridview with games list
@@ -108,8 +83,16 @@ namespace Game_tracker_project1
                 Game deletedGame = (from gameRecords in db.Games
                                      where gameRecords.GameID == gameID
                                      select gameRecords).FirstOrDefault();
-
-                // perform the removal in the DB
+                //// perform the removal for the two teams in db
+                for (int i = 0; i < 2; i++)
+                 {
+                     Team deletedTeam = (from teamRecords in db.Teams
+                                         where teamRecords.GameID == gameID
+                                         select teamRecords).FirstOrDefault();
+                     db.Teams.Remove(deletedTeam);
+                     db.SaveChanges();
+                 }
+                // perform complete  removal in the DB 
                 db.Games.Remove(deletedGame);
                 db.SaveChanges();
 
@@ -145,15 +128,6 @@ namespace Game_tracker_project1
                         }
                     }
                 }
-            }
-        }
-        protected void GamesGridView_RowCommand(object sender, GridViewCommandEventArgs e)
-        {
-            if (e.CommandName == "GameID")
-            {
-                selectedRow = Convert.ToInt32(GamesGridView.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["GameID"]);
-                TeamsDiv.Visible = true;
-                this.GetTeams();
             }
         }
     }

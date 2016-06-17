@@ -21,7 +21,6 @@ namespace Game_tracker_project1
 {
     public partial class Dashboard : System.Web.UI.Page
     {
-        private int selectedRow;
         protected void Page_Load(object sender, EventArgs e)
         {
             //if  loading page for the first time populate the Games grid
@@ -33,36 +32,12 @@ namespace Game_tracker_project1
 
                 //assigning the initial coloumn and the direction that needs to be sorted
                 Session["SortColumn"] = "GameID";
-                Session["Direction"] = "ASC";
+                Session["SortDirection"] = "ASC";
 
                 // Get the games list by the current week
                 this.GetGames(true);//show games by todays date
             }
         }
-        /**
-        * <summary>
-        * This method pupulate the Gridview with teams list
-        * </summary>
-        * 
-        * @method GetTeams
-        * @returns
-        * */
-        protected void GetTeams()
-        {
-            // connect to EF
-            using (DefaultConnection db = new DefaultConnection())
-            {
-                // query the games Table using EF and LINQ
-                var Teams = (from allTeam in db.Teams
-                             where allTeam.GameID == selectedRow
-                             select allTeam);
-
-                // bind the result to the GridView
-                TeamsGridView.DataSource = Teams.AsQueryable().ToList();
-                TeamsGridView.DataBind();
-            }
-        }
-
         /**
          * <summary>
          * This method pupulate the dropdownlist for the weeek number
@@ -82,9 +57,6 @@ namespace Game_tracker_project1
         {
             this.GetWeekNo();//initialise the selected_week match to the calender
             this.GetGames(true);//get games by date
-            TeamsDiv.Visible = false;
-            selectedRow=0;//reset the value
-            this.GetTeams();
         }
         /**
          * <summary>
@@ -164,7 +136,7 @@ namespace Game_tracker_project1
                         if (GamesGridView.Columns[i].SortExpression == Session["SortColumn"].ToString())
                         {
                             //check direction
-                            if (Session["Direction"].ToString() == "ASC")
+                            if (Session["SortDirection"].ToString() == "ASC")
                             {
                                 linkbutton.Text = "<i class='fa fa-caret-down fa-lg'></i>";
                             }
@@ -203,21 +175,6 @@ namespace Game_tracker_project1
             //shows the game list in the week selected
             this.GetGames(false);
             DateSelectorCalendar.SelectedDate= Convert.ToDateTime("01/01/0001");//deselect the date in calender
-            TeamsDiv.Visible = false;
-            selectedRow = 0;
-            this.GetTeams();//reset value
-        }
-
-      
-
-        protected void GamesGridView_RowCommand(object sender, GridViewCommandEventArgs e)
-        {
-            if (e.CommandName == "GameID")
-            {
-                selectedRow = Convert.ToInt32(GamesGridView.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["GameID"]);
-                TeamsDiv.Visible = true;
-                this.GetTeams();
-            }
         }
     }
 }

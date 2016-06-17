@@ -7,13 +7,22 @@
                 <h5>All Fields are Required</h5>
                 <br />
                 <div class="form-group">
-                    <label class="control-label" for="GameName">Game Name</label>
+                    <label class="control-label" for="GameCategory">Game Name</label>
+                    <asp:DropDownList CssClass="form-control" ID="GameCategoryDropDownList" runat="server">
+                        <asp:ListItem Text="Football" Value="Football"/>
+                        <asp:ListItem Text="Cricket" Value="Cricket"/>
+                        <asp:ListItem Text="Online Games" Value="Online Games"/>
+                        <asp:ListItem Text="Baseball" Value="Baseball"/>
+                    </asp:DropDownList>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="GameName">Select the type of Game</label>
                     <asp:TextBox runat="server" CssClass="form-control" ID="GameNameTextBox" placeholder="Game Name" required="true"></asp:TextBox>
                 </div>
                 <div class="form-group">
                     <label class="control-label" for="GameDescTextBox">Game Description</label>
                     <asp:TextBox runat="server" CssClass="form-control" ID="GameDescTextBox" placeholder="Game Description" required="true"></asp:TextBox>
-                </div>
+                </div>                
                 <div class="form-group">
                     <label class="control-label" for="Team1TextBox">Team 1</label>
                     <asp:TextBox runat="server" CssClass="form-control" ID="Team1TextBox" placeholder="Name of the Team-1" required="true"></asp:TextBox>
@@ -21,23 +30,31 @@
                 <div class="form-group">
                     <label class="control-label" for="Team1DescTextBox">Team 1 Description</label>
                     <asp:TextBox runat="server" CssClass="form-control" ID="Team1DescTextBox" placeholder="Description of the Team-1" required="true"></asp:TextBox>
-                </div>
-                <div class="form-group">
-                    <label class="control-label" for="Team1ScoreTextBox">Team 1 Score</label>
-                    <asp:TextBox runat="server" CssClass="form-control" ID="Team1ScoreTextBox" placeholder="Score of the Team-1" required="true"></asp:TextBox>
-                </div>
+                </div>                
                  <div class="form-group">
                     <label class="control-label" for="Team2TextBox">Team 2</label>
                     <asp:TextBox runat="server" CssClass="form-control" ID="Team2TextBox" placeholder="Name of the Team-2" required="true"></asp:TextBox>
                 </div>
                 <div class="form-group">
-                    <label class="control-label" for="Team2DescTextBox">Team 2 Description</label>
+                    <label class="control-label" for="Team2DescTextBox">Team 2 Description </label>
                     <asp:TextBox runat="server" CssClass="form-control" ID="Team2DescTextBox" placeholder="Description of the Team-2" required="true"></asp:TextBox>
                 </div>
                 <div class="form-group">
-                    <label class="control-label" for="Team2ScoreTextBox">Team 2 Score</label>
-                    <asp:TextBox runat="server" CssClass="form-control" ID="Team2ScoreTextBox" placeholder="Score of the Team-2" required="true"></asp:TextBox>
+                    <label class="control-label" for="SpectatorTextBox">Number of Spectators </label>
+                    <asp:TextBox runat="server" CssClass="form-control" ID="SpectatorTextBox" placeholder="Number of Spectators" required="true"></asp:TextBox>
+                </div> 
+                <div class="form-group">
+                    <label class="control-label" for="ScoreAllowedTextBox">Total Scores allowed </label>
+                    <asp:TextBox runat="server" CssClass="form-control" ID="ScoreAllowedTextBox" placeholder="Total Scores allowed" required="true"></asp:TextBox>
                 </div>
+                <div class="form-group">
+                    <label class="control-label" for="Team1ScoreTextBox">Team 1 Score</label>
+                    <asp:TextBox runat="server" CssClass="form-control" ID="Team1ScoreTextBox" placeholder="Score of the Team-1" required="true"></asp:TextBox>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="Team2ScoreTextBox">Team 2 Score </label>
+                    <asp:TextBox runat="server" CssClass="form-control" ID="Team2ScoreTextBox" placeholder="Score of the Team-2" required="true"></asp:TextBox>
+                </div>              
                 <div class="form-group">
                     <label class="control-label" for="EventDateTextBox">Event Date</label>
                     <asp:TextBox runat="server" TextMode="Date" CssClass="form-control" ID="EventDateTextBox" placeholder="Event Date Format: mm/dd/yyyy" required="true"></asp:TextBox>
