@@ -60,13 +60,16 @@ namespace Game_tracker_project1
                 // map the game properties to the form controls
                 if (updatedGame != null)
                 {
+                    GameCategoryDropDownList.SelectedValue = updatedGame.GameCategory;
                     GameNameTextBox.Text = updatedGame.GameName;
                     GameDescTextBox.Text = updatedGame.GameDesc;
                     EventDateTextBox.Text = updatedGame.EventDate.ToString("yyyy-MM-dd");
+                    SpectatorTextBox.Text = updatedGame.SpectatorsNo.ToString();
 
                     Team1TextBox.Text = updatedTeam1.TeamName;
                     Team1DescTextBox.Text = updatedTeam1.TeamDesc;
                     Team1ScoreTextBox.Text = updatedTeam1.TeamScore.ToString();
+                    ScoreAllowedTextBox.Text = updatedTeam1.TotalScoreAllowed.ToString();
 
                     Team2TextBox.Text = updatedTeam2.TeamName;
                     Team2DescTextBox.Text = updatedTeam2.TeamDesc;
@@ -132,33 +135,40 @@ namespace Game_tracker_project1
                                 select team).FirstOrDefault();
                 }
                 //convert scores
-                int score1 = Convert.ToInt32(Team1ScoreTextBox.Text),score2 = Convert.ToInt32(Team2ScoreTextBox.Text);
+                int Score1 = Convert.ToInt32(Team1ScoreTextBox.Text),Score2 = Convert.ToInt32(Team2ScoreTextBox.Text), ScoreAllowed = Convert.ToInt32(ScoreAllowedTextBox.Text);
                 // add form data to the new Game record
+                newGame.GameCategory = GameCategoryDropDownList.SelectedValue;
                 newGame.GameName = GameNameTextBox.Text;
                 newGame.GameDesc = GameDescTextBox.Text;
                 newGame.WeekNo = this.GetWeekNo();
                 newGame.EventDate = Convert.ToDateTime(EventDateTextBox.Text);
-                if (score1 > score2)
+                newGame.SpectatorsNo =Convert.ToInt32(SpectatorTextBox.Text);
+                if ((Score1 + Score2) <= ScoreAllowed)
                 {
-                    newGame.GameWinner = Team1TextBox.Text;
+                    if (Score1 > Score2)
+                    {
+                        newGame.GameWinner = Team1TextBox.Text;
+                    }
+                    else
+                    {
+                        newGame.GameWinner = Team2TextBox.Text;
+                    }
                 }
-                else
-                {
-                    newGame.GameWinner = Team2TextBox.Text;
-                }
-                newGame.TotalScore = score1+score2;
+                newGame.TotalScore = Score1+Score2;
 
                 // add form data to the  Team1 record
                 newTeam1.TeamName = Team1TextBox.Text;
                 newTeam1.TeamDesc = Team1DescTextBox.Text;
-                newTeam1.TeamScore = score1;
+                newTeam1.TeamScore = Score1;
                 newTeam1.TeamNo = 1;
+                newTeam1.TotalScoreAllowed = ScoreAllowed;
 
                 // add form data to the  Team2 record
                 newTeam2.TeamName = Team2TextBox.Text;
                 newTeam2.TeamDesc = Team2DescTextBox.Text;
-                newTeam2.TeamScore = score2;
+                newTeam2.TeamScore = Score2;
                 newTeam2.TeamNo = 2;
+                newTeam2.TotalScoreAllowed = ScoreAllowed;
                 // use LINQ to ADO.NET to add / insert new game into the database
                 // check to see if a new game is being added
                 if (GameID == 0)

@@ -20,7 +20,7 @@ namespace Game_tracker_project1
             if ((!IsPostBack) && (Request.QueryString.Count > 0))
             {
                 //assigning the initial coloumn and the direction that needs to be sorted
-                Session["SortColumn"] = "GameID";
+                Session["SortColumn"] = "TeamName";
                 Session["SortDirection"] = "ASC";
                 this.GetTeams();
             }

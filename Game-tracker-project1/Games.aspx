@@ -7,8 +7,8 @@
                 <h5>All Fields are Required</h5>
                 <br />
                 <div class="form-group">
-                    <label class="control-label" for="GameCategory">Game Name</label>
-                    <asp:DropDownList CssClass="form-control" ID="GameCategoryDropDownList" runat="server">
+                    <label class="control-label" for="GameCategory">Select the Game Category</label>
+                    <asp:DropDownList CssClass="form-control" ID="GameCategoryDropDownList" DataValueField="asca" runat="server">
                         <asp:ListItem Text="Football" Value="Football"/>
                         <asp:ListItem Text="Cricket" Value="Cricket"/>
                         <asp:ListItem Text="Online Games" Value="Online Games"/>
@@ -16,7 +16,7 @@
                     </asp:DropDownList>
                 </div>
                 <div class="form-group">
-                    <label class="control-label" for="GameName">Select the type of Game</label>
+                    <label class="control-label" for="GameName">Game Name</label>
                     <asp:TextBox runat="server" CssClass="form-control" ID="GameNameTextBox" placeholder="Game Name" required="true"></asp:TextBox>
                 </div>
                 <div class="form-group">

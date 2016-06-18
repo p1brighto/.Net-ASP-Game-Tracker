@@ -31,7 +31,7 @@ namespace Game_tracker_project1
                 this.GetWeekNo();//initialise the current week number
 
                 //assigning the initial coloumn and the direction that needs to be sorted
-                Session["SortColumn"] = "GameID";
+                Session["SortColumn"] = "GameCategory";
                 Session["SortDirection"] = "ASC";
 
                 // Get the games list by the current week
