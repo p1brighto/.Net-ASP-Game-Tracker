@@ -68,12 +68,12 @@ namespace Game_tracker_project1
 
                     Team1TextBox.Text = updatedTeam1.TeamName;
                     Team1DescTextBox.Text = updatedTeam1.TeamDesc;
-                    Team1ScoreTextBox.Text = updatedTeam1.TeamScore.ToString();
-                    ScoreAllowedTextBox.Text = updatedTeam1.TotalScoreAllowed.ToString();
+                    Team1PointsTextBox.Text = updatedTeam1.TeamScore.ToString();
+                    PointsAllowedTextBox.Text = updatedTeam1.TotalScoreAllowed.ToString();
 
                     Team2TextBox.Text = updatedTeam2.TeamName;
                     Team2DescTextBox.Text = updatedTeam2.TeamDesc;
-                    Team2ScoreTextBox.Text = updatedTeam2.TeamScore.ToString();
+                    Team2PointsTextBox.Text = updatedTeam2.TeamScore.ToString();
                 }
             }
         }
@@ -103,49 +103,65 @@ namespace Game_tracker_project1
         }
         protected void SaveButton_Click(object sender, EventArgs e)
         {
-            // Use EF to connect to the server
-            using (DefaultConnection db = new DefaultConnection())
+            //convert scores
+            int Points1 = Convert.ToInt32(Team1PointsTextBox.Text), Points2 = Convert.ToInt32(Team2PointsTextBox.Text), PointsAllowed = Convert.ToInt32(PointsAllowedTextBox.Text);
+
+            if ((Points1 + Points2) > PointsAllowed)
             {
-                // use the Game model to create a new Games object and
-                // save a new record
-                Game newGame = new Game();
-                Team newTeam1, newTeam2;
-                newTeam1 = new Team();
-                newTeam2 = new Team();
-
-                int GameID = 0;
-
-                if (Request.QueryString.Count > 0)
+                ErrorLabel.Text = "Sum of Team-1 pionts and Team-2 points cannot exceed the Total pionts allowed!";
+                Team1PointsTextBox.BorderColor =Team2PointsTextBox.BorderColor = PointsAllowedTextBox.BorderColor=System.Drawing.Color.Red;
+                ErrorLabel.Visible = true;
+            }
+            else if(Points1==Points2)
+            {
+                ErrorLabel.Text = "Cannot be a draw mach(individual points should not be the same)!";
+                PointsAllowedTextBox.BorderColor = System.Drawing.Color.Empty;
+                Team1PointsTextBox.BorderColor = Team2PointsTextBox.BorderColor =  System.Drawing.Color.Red;
+                ErrorLabel.Visible = true;
+            }
+            else
+            {
+                ErrorLabel.Visible = false;
+                // Use EF to connect to the server
+                using (DefaultConnection db = new DefaultConnection())
                 {
-                    // get the id from url
-                    GameID = Convert.ToInt32(Request.QueryString["GameID"]);
+                    // use the Game model to create a new Games object and
+                    // save a new record
+                    Game newGame = new Game();
+                    Team newTeam1, newTeam2;
+                    newTeam1 = new Team();
+                    newTeam2 = new Team();
 
-                    // get the current ames from EF DB
-                    newGame = (from game in db.Games 
-                               where game.GameID == GameID  
-                               select game).FirstOrDefault();
+                    int GameID = 0;
 
-                    newTeam1= (from team in db.Teams
-                              where team.GameID == GameID where team.TeamNo == 1
-                              select team).FirstOrDefault();
+                    if (Request.QueryString.Count > 0)
+                    {
+                        // get the id from url
+                        GameID = Convert.ToInt32(Request.QueryString["GameID"]);
 
-                    newTeam2 = (from team in db.Teams
-                                where team.GameID == GameID
-                                where team.TeamNo == 2
-                                select team).FirstOrDefault();
-                }
-                //convert scores
-                int Score1 = Convert.ToInt32(Team1ScoreTextBox.Text),Score2 = Convert.ToInt32(Team2ScoreTextBox.Text), ScoreAllowed = Convert.ToInt32(ScoreAllowedTextBox.Text);
-                // add form data to the new Game record
-                newGame.GameCategory = GameCategoryDropDownList.SelectedValue;
-                newGame.GameName = GameNameTextBox.Text;
-                newGame.GameDesc = GameDescTextBox.Text;
-                newGame.WeekNo = this.GetWeekNo();
-                newGame.EventDate = Convert.ToDateTime(EventDateTextBox.Text);
-                newGame.SpectatorsNo =Convert.ToInt32(SpectatorTextBox.Text);
-                if ((Score1 + Score2) <= ScoreAllowed)
-                {
-                    if (Score1 > Score2)
+                        // get the current ames from EF DB
+                        newGame = (from game in db.Games
+                                   where game.GameID == GameID
+                                   select game).FirstOrDefault();
+
+                        newTeam1 = (from team in db.Teams
+                                    where team.GameID == GameID
+                                    where team.TeamNo == 1
+                                    select team).FirstOrDefault();
+
+                        newTeam2 = (from team in db.Teams
+                                    where team.GameID == GameID
+                                    where team.TeamNo == 2
+                                    select team).FirstOrDefault();
+                    }
+                   // add form data to the new Game record
+                    newGame.GameCategory = GameCategoryDropDownList.SelectedValue;
+                    newGame.GameName = GameNameTextBox.Text;
+                    newGame.GameDesc = GameDescTextBox.Text;
+                    newGame.WeekNo = this.GetWeekNo();
+                    newGame.EventDate = Convert.ToDateTime(EventDateTextBox.Text);
+                    newGame.SpectatorsNo = Convert.ToInt32(SpectatorTextBox.Text);
+                    if (Points1 > Points2)
                     {
                         newGame.GameWinner = Team1TextBox.Text;
                     }
@@ -153,36 +169,36 @@ namespace Game_tracker_project1
                     {
                         newGame.GameWinner = Team2TextBox.Text;
                     }
+                    newGame.TotalScore = Points1 + Points2;
+
+                    // add form data to the  Team1 record
+                    newTeam1.TeamName = Team1TextBox.Text;
+                    newTeam1.TeamDesc = Team1DescTextBox.Text;
+                    newTeam1.TeamScore = Points1;
+                    newTeam1.TeamNo = 1;
+                    newTeam1.TotalScoreAllowed = PointsAllowed;
+
+                    // add form data to the  Team2 record
+                    newTeam2.TeamName = Team2TextBox.Text;
+                    newTeam2.TeamDesc = Team2DescTextBox.Text;
+                    newTeam2.TeamScore = Points2;
+                    newTeam2.TeamNo = 2;
+                    newTeam2.TotalScoreAllowed = PointsAllowed;
+                    // use LINQ to ADO.NET to add / insert new game into the database
+                    // check to see if a new game is being added
+                    if (GameID == 0)
+                    {
+                        db.Games.Add(newGame);
+                        db.Teams.Add(newTeam1);
+                        db.Teams.Add(newTeam2);
+                    }
+
+                    // save our changes
+                    db.SaveChanges();
+
+                    // Redirect back to the updated Dashboard page
+                    Response.Redirect("~/Dashboard.aspx");
                 }
-                newGame.TotalScore = Score1+Score2;
-
-                // add form data to the  Team1 record
-                newTeam1.TeamName = Team1TextBox.Text;
-                newTeam1.TeamDesc = Team1DescTextBox.Text;
-                newTeam1.TeamScore = Score1;
-                newTeam1.TeamNo = 1;
-                newTeam1.TotalScoreAllowed = ScoreAllowed;
-
-                // add form data to the  Team2 record
-                newTeam2.TeamName = Team2TextBox.Text;
-                newTeam2.TeamDesc = Team2DescTextBox.Text;
-                newTeam2.TeamScore = Score2;
-                newTeam2.TeamNo = 2;
-                newTeam2.TotalScoreAllowed = ScoreAllowed;
-                // use LINQ to ADO.NET to add / insert new game into the database
-                // check to see if a new game is being added
-                if (GameID == 0)
-                {
-                    db.Games.Add(newGame);
-                    db.Teams.Add(newTeam1);
-                    db.Teams.Add(newTeam2);
-                }
-
-                // save our changes
-                db.SaveChanges();
-
-                // Redirect back to the updated Dashboard page
-                Response.Redirect("~/Dashboard.aspx");
             }
         }
     }

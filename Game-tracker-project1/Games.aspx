@@ -6,6 +6,9 @@
                 <h1>Games Details</h1>
                 <h5>All Fields are Required</h5>
                 <br />
+                 <div class="form-group">
+                    <asp:Label ID="ErrorLabel" runat="server" ForeColor="Red" visible="false"></asp:Label>
+                </div>
                 <div class="form-group">
                     <label class="control-label" for="GameCategory">Select the Game Category</label>
                     <asp:DropDownList CssClass="form-control" ID="GameCategoryDropDownList" DataValueField="asca" runat="server">
@@ -42,25 +45,30 @@
                 <div class="form-group">
                     <label class="control-label" for="SpectatorTextBox">Number of Spectators </label>
                     <asp:TextBox runat="server" CssClass="form-control" ID="SpectatorTextBox" placeholder="Number of Spectators" required="true"></asp:TextBox>
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" ControlToValidate="SpectatorTextBox" ValidationExpression="\d+" runat="server" ErrorMessage="Only Numbers allowed!" ForeColor="Red"></asp:RegularExpressionValidator>
+
                 </div> 
                 <div class="form-group">
-                    <label class="control-label" for="ScoreAllowedTextBox">Total Scores allowed </label>
-                    <asp:TextBox runat="server" CssClass="form-control" ID="ScoreAllowedTextBox" placeholder="Total Scores allowed" required="true"></asp:TextBox>
+                    <label class="control-label" for="PointsAllowedTextBox">Total Pointss allowed </label>
+                    <asp:TextBox runat="server" CssClass="form-control" ID="PointsAllowedTextBox" placeholder="Total Pointss allowed" required="true"></asp:TextBox>
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator2" ControlToValidate="PointsAllowedTextBox" ValidationExpression="\d+" runat="server" ErrorMessage="Only Numbers allowed!" ForeColor="Red"></asp:RegularExpressionValidator>
                 </div>
                 <div class="form-group">
-                    <label class="control-label" for="Team1ScoreTextBox">Team 1 Score</label>
-                    <asp:TextBox runat="server" CssClass="form-control" ID="Team1ScoreTextBox" placeholder="Score of the Team-1" required="true"></asp:TextBox>
+                    <label class="control-label" for="Team1PointsTextBox">Team 1 Points</label>
+                    <asp:TextBox runat="server" CssClass="form-control" ID="Team1PointsTextBox" placeholder="Points of the Team-1" required="true"></asp:TextBox>
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator3" ControlToValidate="Team1PointsTextBox" ValidationExpression="\d+" runat="server" ErrorMessage="Only Numbers allowed!" ForeColor="Red"></asp:RegularExpressionValidator>
                 </div>
                 <div class="form-group">
-                    <label class="control-label" for="Team2ScoreTextBox">Team 2 Score </label>
-                    <asp:TextBox runat="server" CssClass="form-control" ID="Team2ScoreTextBox" placeholder="Score of the Team-2" required="true"></asp:TextBox>
+                    <label class="control-label" for="Team2PointsTextBox">Team 2 Points </label>
+                    <asp:TextBox runat="server" CssClass="form-control" ID="Team2PointsTextBox" placeholder="Points of the Team-2" required="true"></asp:TextBox>
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator4" ControlToValidate="Team2PointsTextBox" ValidationExpression="\d+" runat="server" ErrorMessage="Only Numbers allowed!" ForeColor="Red"></asp:RegularExpressionValidator>
                 </div>              
                 <div class="form-group">
                     <label class="control-label" for="EventDateTextBox">Event Date</label>
                     <asp:TextBox runat="server" TextMode="Date" CssClass="form-control" ID="EventDateTextBox" placeholder="Event Date Format: mm/dd/yyyy" required="true"></asp:TextBox>
                     <asp:RangeValidator ID="RangeValidator1" runat="server" ErrorMessage="Invalid Date! Format: mm/dd/yyyy"
                         ControlToValidate="EventDateTextBox" MinimumValue="01/01/2000" MaximumValue="01/01/2999"
-                        Type="Date" Display="Dynamic" BackColor="Red" ForeColor="White" Font-Size="Large"></asp:RangeValidator>
+                        Type="Date" Display="Dynamic"  ForeColor="Red" Font-Size="Medium"></asp:RangeValidator>
                 </div>
                 <div class="text-right">
                     <asp:Button Text="Cancel" ID="CancelButton" CssClass="btn btn-warning btn-lg" runat="server" 
