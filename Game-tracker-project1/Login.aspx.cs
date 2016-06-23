@@ -19,5 +19,10 @@ namespace Game_tracker_project1
         {
 
         }
+
+        protected void LoginButton_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

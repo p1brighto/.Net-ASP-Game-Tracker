@@ -74,7 +74,7 @@ namespace Game_tracker_project1
             string sortString = Session["SortColumn"].ToString() + " " + Session["SortDirection"].ToString();
 
             // connect to EF
-            using (DefaultConnection db = new DefaultConnection())
+            using (GameTrackerConnection db = new GameTrackerConnection())
             {
                 //checks whether it list should list by date or week
                 if (checker)

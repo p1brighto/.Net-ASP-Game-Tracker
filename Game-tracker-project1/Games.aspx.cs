@@ -43,7 +43,7 @@ namespace Game_tracker_project1
             int GameID = Convert.ToInt32(Request.QueryString["GameID"]);
 
             // connect to the EF DB
-            using (DefaultConnection db = new DefaultConnection())
+            using (GameTrackerConnection db = new GameTrackerConnection())
             {
                 // populate a game instance with the GameID from the URL parameter
                 Game updatedGame= (from game in db.Games
@@ -103,27 +103,13 @@ namespace Game_tracker_project1
         }
         protected void SaveButton_Click(object sender, EventArgs e)
         {
-            //convert scores
-            int Points1 = Convert.ToInt32(Team1PointsTextBox.Text), Points2 = Convert.ToInt32(Team2PointsTextBox.Text), PointsAllowed = Convert.ToInt32(PointsAllowedTextBox.Text);
+            if (CustomValidator1.IsValid)
+            {
+                //convert scores
+                int Points1 = Convert.ToInt32(Team1PointsTextBox.Text), Points2 = Convert.ToInt32(Team2PointsTextBox.Text), PointsAllowed = Convert.ToInt32(PointsAllowedTextBox.Text);
 
-            if ((Points1 + Points2) > PointsAllowed)
-            {
-                ErrorLabel.Text = "Sum of Team-1 pionts and Team-2 points cannot exceed the Total pionts allowed!";
-                Team1PointsTextBox.BorderColor =Team2PointsTextBox.BorderColor = PointsAllowedTextBox.BorderColor=System.Drawing.Color.Red;
-                ErrorLabel.Visible = true;
-            }
-            else if(Points1==Points2)
-            {
-                ErrorLabel.Text = "Cannot be a draw mach(individual points should not be the same)!";
-                PointsAllowedTextBox.BorderColor = System.Drawing.Color.Empty;
-                Team1PointsTextBox.BorderColor = Team2PointsTextBox.BorderColor =  System.Drawing.Color.Red;
-                ErrorLabel.Visible = true;
-            }
-            else
-            {
-                ErrorLabel.Visible = false;
                 // Use EF to connect to the server
-                using (DefaultConnection db = new DefaultConnection())
+                using (GameTrackerConnection db = new GameTrackerConnection())
                 {
                     // use the Game model to create a new Games object and
                     // save a new record
@@ -154,7 +140,7 @@ namespace Game_tracker_project1
                                     where team.TeamNo == 2
                                     select team).FirstOrDefault();
                     }
-                   // add form data to the new Game record
+                    // add form data to the new Game record
                     newGame.GameCategory = GameCategoryDropDownList.SelectedValue;
                     newGame.GameName = GameNameTextBox.Text;
                     newGame.GameDesc = GameDescTextBox.Text;
@@ -199,6 +185,19 @@ namespace Game_tracker_project1
                     // Redirect back to the updated Dashboard page
                     Response.Redirect("~/Dashboard.aspx");
                 }
+            }
+        }
+
+        protected void CustomValidator1_ServerValidate(object source, ServerValidateEventArgs e)
+        {
+            if ((Convert.ToInt32(Team1PointsTextBox.Text) + Convert.ToInt32(Team2PointsTextBox.Text)) > Convert.ToInt32(e.Value))
+            {
+                e.IsValid = false;
+                SaveButton.Focus();
+            }
+            else
+            {
+                e.IsValid = true;
             }
         }
     }

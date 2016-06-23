@@ -13,7 +13,7 @@
                         <asp:BoundField DataField="TeamDesc" HeaderText="Team Description" Visible="true" SortExpression="TeamDesc"/>
                         <asp:BoundField DataField="TotalScoreAllowed" HeaderText="Total Points Allowed" Visible="true" SortExpression="TotalScoreAllowed"/>
                         <asp:BoundField DataField="TeamScore" HeaderText="Points Scored" Visible="true" SortExpression="TeamScore"/>
-                        <asp:HyperLinkField  HeaderText="Edit" Text="<i class='fa fa-pencil-square-o fa-lg'></i> Edit" NavigateUrl="~/Games.aspx.cs"
+                        <asp:HyperLinkField  HeaderText="Edit"  Text="<i class='fa fa-pencil-square-o fa-lg'></i> Edit" NavigateUrl="~/Games.aspx.cs"
                             DataNavigateUrlFields="GameID" DataNavigateUrlFormatString="Games.aspx?GameID={0}" 
                             ControlStyle-CssClass="btn btn-primary btn-sm" Visible="false"/>                  
                     </Columns>

@@ -39,7 +39,7 @@ namespace Game_tracker_project1
             int GameID = Convert.ToInt32(Request.QueryString["GameID"]);
 
             // connect to EF
-            using (DefaultConnection db = new DefaultConnection())
+            using (GameTrackerConnection db = new GameTrackerConnection())
             {
                 // query the games Table using EF and LINQ
                 var Teams = (from allTeam in db.Teams
