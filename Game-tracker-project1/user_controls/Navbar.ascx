@@ -14,11 +14,18 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
-                <li id="home" runat="server"><a href="Default.aspx"><i class="fa fa-home fa-lg"></i> Home</a></li>
-                <li id="dashboard" runat="server"><a href="Dashboard.aspx"><i class="fa fa-tachometer fa-lg"></i> Dashboard</a></li>
-                <li id="about" runat="server"><a href="About.aspx"><i class="fa fa-gamepad fa-lg"></i> About</a></li>
-                <li id="login" runat="server"><a href="Login.aspx"><i class="fa fa-sign-in fa-lg"></i> Login</a></li>
-                <li id="register" runat="server"><a href="Register.aspx"><i class="fa fa-user-plus fa-lg"></i> Register</a></li>
+                <li id="home" runat="server"><a href="/Default.aspx"><i class="fa fa-home fa-lg"></i> Home</a></li>
+                <li id="about" runat="server"><a href="/About.aspx"><i class="fa fa-gamepad fa-lg"></i> About</a></li>
+                
+                <asp:PlaceHolder ID="PublicPlaceHolder" runat="server">
+                    <li id="login" runat="server"><a href="/Login.aspx"><i class="fa fa-sign-in fa-lg"></i> Login</a></li>
+                    <li id="register" runat="server"><a href="/Register.aspx"><i class="fa fa-user-plus fa-lg"></i> Register</a></li>
+                </asp:PlaceHolder>
+
+                <asp:PlaceHolder ID="adminPlaceHolder" runat="server">
+                    <li id="dashboard" runat="server"><a href="/GameTracker/Dashboard.aspx"><i class="fa fa-tachometer fa-lg"></i> Dashboard</a></li>
+                    <li id="logout" runat="server"><a href="/Logout.aspx"><i class="fa fa-sign-out fa-lg"></i> Logout</a></li>
+                </asp:PlaceHolder>
             </ul>
         </div>
         <!-- /.navbar-collapse -->

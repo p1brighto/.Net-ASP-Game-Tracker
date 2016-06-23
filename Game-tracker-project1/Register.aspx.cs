@@ -59,8 +59,8 @@ namespace Game_tracker_project1
                 //sign in
                 authenticationManager.SignIn(new AuthenticationProperties() { }, userIdentity);
 
-                //Redirect to the MainMenu page
-                Response.Redirect("~/Dashboard.aspx");
+                //Redirect to the Dashboard
+                Response.Redirect("~/GameTracker/Dashboard.aspx");
             }
             else
             {

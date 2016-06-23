@@ -43,7 +43,7 @@
                         <div class="form-group">
                             <label class="control-label" for="Team1PointsTextBox">Team 1 Points</label>
                             <asp:TextBox runat="server" CssClass="form-control" ID="Team1PointsTextBox" placeholder="Points of the Team-1" required="true"></asp:TextBox>
-                            <asp:RegularExpressionValidator Display="Dynamic" ID="RegularExpressionValidator3" ControlToValidate="Team1PointsTextBox" ValidationExpression="\d+" runat="server" ErrorMessage="Only Numbers allowed!" ForeColor="Red"></asp:RegularExpressionValidator>
+                            <asp:RegularExpressionValidator Display="Dynamic"  ID="RegularExpressionValidator3" CssClass="label label-danger" Font-Size="small" ControlToValidate="Team1PointsTextBox" ValidationExpression="\d+" runat="server" ErrorMessage="Only integer numbers are allowed!"></asp:RegularExpressionValidator>
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -58,8 +58,8 @@
                         <div class="form-group">
                             <label class="control-label" for="Team2PointsTextBox">Team 2 Points </label>
                             <asp:TextBox runat="server" CssClass="form-control" ID="Team2PointsTextBox" placeholder="Points of the Team-2" required="true"></asp:TextBox>
-                            <asp:RegularExpressionValidator Display="Dynamic" ID="RegularExpressionValidator4" ControlToValidate="Team2PointsTextBox" ValidationExpression="\d+" runat="server" ErrorMessage="Only Numbers allowed!" ForeColor="Red"></asp:RegularExpressionValidator>
-                            <asp:CompareValidator Display="Dynamic" ID="CompareValidator1" ControlToValidate="Team2PointsTextBox" ControlToCompare="Team1PointsTextBox" Operator="NotEqual" runat="server" ForeColor="Red" ErrorMessage="Cannot be a draw match! (Team-1 points & Team-2 points cannot be the same!)"></asp:CompareValidator>
+                            <asp:RegularExpressionValidator Display="Dynamic" CssClass="label label-danger" Font-Size="small" ID="RegularExpressionValidator4" ControlToValidate="Team2PointsTextBox" ValidationExpression="\d+" runat="server" ErrorMessage="Only integer numbers are allowed!"></asp:RegularExpressionValidator>
+                            <asp:CompareValidator Display="Dynamic" ID="CompareValidator1" CssClass="label label-danger" Font-Size="small" ControlToValidate="Team2PointsTextBox" ControlToCompare="Team1PointsTextBox" Operator="NotEqual" runat="server" ErrorMessage="Cannot be a draw match! (Team-1 points & Team-2 points cannot be the same!)"></asp:CompareValidator>
                         </div>
                     </div>
                 </div>
@@ -69,20 +69,20 @@
                         <div class="form-group">
                             <label class="control-label" for="SpectatorTextBox">Number of Spectators </label>
                             <asp:TextBox runat="server" CssClass="form-control" ID="SpectatorTextBox" placeholder="Number of Spectators" required="true"></asp:TextBox>
-                            <asp:RegularExpressionValidator Display="Dynamic" ID="RegularExpressionValidator1" ControlToValidate="SpectatorTextBox" ValidationExpression="\d+" runat="server" ErrorMessage="Only Numbers allowed!" ForeColor="Red"></asp:RegularExpressionValidator>
-                        </div>
+                            <asp:RegularExpressionValidator Display="Dynamic" CssClass="label label-danger" Font-Size="small" ID="RegularExpressionValidator1" ControlToValidate="SpectatorTextBox" ValidationExpression="\d+" runat="server" ErrorMessage="Only Numbers allowed!"></asp:RegularExpressionValidator>
+                        </div>  
                         <div class="form-group">
                             <label class="control-label" for="PointsAllowedTextBox">Total Pointss allowed </label>
                             <asp:TextBox runat="server" CssClass="form-control" ID="PointsAllowedTextBox" placeholder="Total Pointss allowed" required="true"></asp:TextBox>
-                            <asp:RegularExpressionValidator Display="Dynamic" ID="RegularExpressionValidator2" ControlToValidate="PointsAllowedTextBox" ValidationExpression="\d+" runat="server" ErrorMessage="Only Numbers allowed!" ForeColor="Red"></asp:RegularExpressionValidator>
-                            <asp:CustomValidator ID="CustomValidator1" SetFocusOnError="true" runat="server" ForeColor="Red" ControlToValidate="PointsAllowedTextBox" OnServerValidate="CustomValidator1_ServerValidate" Display="Dynamic" ErrorMessage="Individual points cannot exceed Total pionts!"></asp:CustomValidator>
+                            <asp:RegularExpressionValidator Display="Dynamic" CssClass="label label-danger" Font-Size="small"  ID="RegularExpressionValidator2" ControlToValidate="PointsAllowedTextBox" ValidationExpression="\d+" runat="server" ErrorMessage="Only Numbers allowed!"></asp:RegularExpressionValidator>
+                            <asp:CustomValidator ID="CustomValidator1" CssClass="label label-danger" Font-Size="small"  SetFocusOnError="true" runat="server"  ControlToValidate="PointsAllowedTextBox" OnServerValidate="CustomValidator1_ServerValidate" Display="Dynamic" ErrorMessage="Individual points cannot exceed Total pionts!"></asp:CustomValidator>
                         </div>
                         <div class="form-group">
                             <label class="control-label" for="EventDateTextBox">Event Date</label>
                             <asp:TextBox runat="server" TextMode="Date" CssClass="form-control" ID="EventDateTextBox" placeholder="Event Date Format: mm/dd/yyyy" required="true"></asp:TextBox>
-                            <asp:RangeValidator ID="RangeValidator1" runat="server" ErrorMessage="Invalid Date! Format: mm/dd/yyyy"
-                                ControlToValidate="EventDateTextBox" MinimumValue="01/01/2000" MaximumValue="01/01/2999"
-                                Type="Date" Display="Dynamic" ForeColor="Red" Font-Size="Medium"></asp:RangeValidator>
+                            <asp:RangeValidator ID="RangeValidator1" CssClass="label label-danger" runat="server" ErrorMessage="Invalid Date! Format: mm/dd/yyyy"
+                                ControlToValidate="EventDateTextBox"  MinimumValue="01/01/2000" MaximumValue="01/01/2999"
+                                Type="Date" Display="Dynamic" Font-Size="small"></asp:RangeValidator>
                         </div>
                     </div>
                 </div>

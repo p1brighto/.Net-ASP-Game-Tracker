@@ -80,7 +80,7 @@ namespace Game_tracker_project1
         protected void CancelButton_Click(object sender, EventArgs e)
         {
             //Redirect  back to Games page
-            Response.Redirect("~/Dashboard.aspx");
+            Response.Redirect("~/GameTracker/Dashboard.aspx");
         }
         /**
         * <summary>
@@ -183,7 +183,7 @@ namespace Game_tracker_project1
                     db.SaveChanges();
 
                     // Redirect back to the updated Dashboard page
-                    Response.Redirect("~/Dashboard.aspx");
+                    Response.Redirect("~/GameTracker/Dashboard.aspx");
                 }
             }
         }
