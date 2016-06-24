@@ -9,7 +9,6 @@
     <title></title>
     <!-- CSS Section -->
     <link href="Content/bootstrap.min.css" rel="stylesheet" />
-    <link href="Content/bootstrap-theme.min.css" rel="stylesheet" />
     <link href="Content/font-awesome.min.css" rel="stylesheet" />
     <link href="Content/app.css" rel="stylesheet" />
     <asp:ContentPlaceHolder ID="head" runat="server">
@@ -24,9 +23,11 @@
             </asp:ContentPlaceHolder>
         </div>
         <!-- Footer -->
-        <footer class="footer navbar navbar-fixed-bottom bg-info">
+        <footer class="footer">
             <div class="container">
-                <p class="text-muted">&copy; 2016 Game Tracker</p>
+                <div class="row">
+                    <p>&copy; 2016 Game Tracker</p>
+                </div>
             </div>
         </footer>
     </form>
