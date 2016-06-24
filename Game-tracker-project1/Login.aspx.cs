@@ -12,8 +12,8 @@ using Microsoft.Owin.Security;
 
 /**
  * @author: Brighto Paul,Kuldeepsingh Jeewoololl
- * @date: June 8, 2016
- * version:1.0
+ * @date: June 22, 2016
+ * version:3.0
  * Description:
  */
 

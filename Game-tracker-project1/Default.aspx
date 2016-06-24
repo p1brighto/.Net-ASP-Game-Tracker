@@ -8,6 +8,9 @@
                     </asp:DropDownList>
                 <h4>Show by date</h4>
                     <asp:Calendar ID="DateSelectorCalendar" OnSelectionChanged="DateSelectorCalendar_SelectionChanged" runat="server"></asp:Calendar>
+                <div>
+                    <asp:Button ID="ShowButton"   runat="server" OnClick="ShowButton_Click" Text="Show All" />
+                </div>
             </div>
             <div class=" col-md-8">
                 <h1>Games List</h1>

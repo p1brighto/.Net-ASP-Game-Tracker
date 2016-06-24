@@ -12,7 +12,7 @@ using System.Globalization;
 
 /**
  * @author: Brighto Paul(2003003805),Kuldeepsingh Jeewoololl(200304689)
- * @date: June 10, 2016
+ * @date: June 23, 2016
  * Desc: List the the games according to the week number or date selected and display which team won or lose
  * version:1.2
  */
@@ -35,7 +35,8 @@ namespace Game_tracker_project1
                 Session["SortDirection"] = "ASC";
 
                 // Get the games list by the current week
-                this.GetGames(true);//show games by todays date
+                this.GetGames(1);
+                DateSelectorCalendar.SelectedDate = Convert.ToDateTime("01/01/0001");//deselecting the date in calender
             }
         }
         /**
@@ -48,6 +49,7 @@ namespace Game_tracker_project1
          */
         protected void PopulateDropDown()
         {
+            WeekNoDropDownList.Items.Add(" ");//adding nul value as default
             for (int i=1; i<=53; i++)
             {
                 WeekNoDropDownList.Items.Add(i.ToString());//adding items
@@ -56,20 +58,21 @@ namespace Game_tracker_project1
         protected void DateSelectorCalendar_SelectionChanged(object sender, EventArgs e)
         {
             this.GetWeekNo();//initialise the selected_week match to the calender
-            this.GetGames(true);//get games by date
+            this.GetGames(0);//get games by date
         }
         /**
          * <summary>
          * This method pupulate the Gridview with games list
-         * The method take a boolean value
-         * if its true-show the list in that date, which can be selected using calender
-         * if its false-show the list in the  week,which can be selected using the dropdown
+         * The method take a integer value
+         * if its 0-show the list in that date, which can be selected using calender
+         * if its 1-show the list in the  week,which can be selected using the dropdown
+         * if its 2-show all the games list
          * </summary>
          * 
          * @method GetGames
          * @returns {void}
          */
-        protected void GetGames(Boolean checker)
+        protected void GetGames(int checker)
         {
             string sortString = Session["SortColumn"].ToString() + " " + Session["SortDirection"].ToString();
 
@@ -77,7 +80,7 @@ namespace Game_tracker_project1
             using (GameTrackerConnection db = new GameTrackerConnection())
             {
                 //checks whether it list should list by date or week
-                if (checker)
+                if (checker==0)//show by date
                 {
                     // query the games Table using EF and LINQ
                     var Games = (from allGames in db.Games
@@ -88,7 +91,7 @@ namespace Game_tracker_project1
                     GamesGridView.DataSource = Games.AsQueryable().OrderBy(sortString).ToList();
                     GamesGridView.DataBind();
                 }
-                else
+                else if (checker == 1)//show by week number
                 {
                     int weekNo = Convert.ToInt32(WeekNoDropDownList.SelectedValue);//converting the selected week number to the int
 
@@ -96,6 +99,15 @@ namespace Game_tracker_project1
                     var Games = (from allGames in db.Games
                                  where allGames.WeekNo == weekNo
                                  select allGames);
+
+                    // bind the result to the GridView
+                    GamesGridView.DataSource = Games.AsQueryable().OrderBy(sortString).ToList();
+                    GamesGridView.DataBind();
+                }
+                else//show all lists
+                {
+                    // query the games Table using EF and LINQ
+                    var Games = (from allGames in db.Games  select allGames);
 
                     // bind the result to the GridView
                     GamesGridView.DataSource = Games.AsQueryable().OrderBy(sortString).ToList();
@@ -157,14 +169,18 @@ namespace Game_tracker_project1
             //get the coloum to sort by
             Session["SortColumn"] = e.SortExpression;
 
-            //refresh the grid
+            //refresh the grid based on the date or week
             if(DateSelectorCalendar.SelectedDate.Date==DateTime.MinValue.Date)
             {
-                this.GetGames(false);
+                this.GetGames(2);
+            }
+            else if(WeekNoDropDownList.SelectedValue==" ")
+            {
+                this.GetGames(0);
             }
             else
             {
-                this.GetGames(true);
+                this.GetGames(1);
             }
             //toggle the direction
             Session["SortDirection"] = Session["SortDirection"].ToString() == "ASC" ? "DESC" : "ASC";
@@ -172,9 +188,20 @@ namespace Game_tracker_project1
 
         protected void WeekNoDropDownList_TextChanged(object sender, EventArgs e)
         {
-            //shows the game list in the week selected
-            this.GetGames(false);
-            DateSelectorCalendar.SelectedDate= Convert.ToDateTime("01/01/0001");//deselect the date in calender
+            if(WeekNoDropDownList.SelectedValue!=" ")
+            {
+                //shows the game list in the week selected
+                this.GetGames(1);
+                DateSelectorCalendar.SelectedDate = Convert.ToDateTime("01/01/0001");//deselect the date in calender
+            }
+        }
+
+        protected void ShowButton_Click(object sender, EventArgs e)
+        {
+            //show the entire game list
+            this.GetGames(2);
+            DateSelectorCalendar.SelectedDate = Convert.ToDateTime("01/01/0001");//deselect the date in calender
+            WeekNoDropDownList.SelectedValue = " ";//making it selected null value
         }
     }
 }

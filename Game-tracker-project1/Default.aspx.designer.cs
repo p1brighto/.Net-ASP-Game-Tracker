@@ -31,6 +31,15 @@ namespace Game_tracker_project1 {
         protected global::System.Web.UI.WebControls.Calendar DateSelectorCalendar;
         
         /// <summary>
+        /// ShowButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ShowButton;
+        
+        /// <summary>
         /// GamesGridView control.
         /// </summary>
         /// <remarks>

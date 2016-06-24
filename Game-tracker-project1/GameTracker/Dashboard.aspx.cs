@@ -12,9 +12,9 @@ using System.Web.ModelBinding;
 using System.Linq.Dynamic;
 /**
  * @author: Brighto Paul(2003003805),Kuldeepsingh Jeewoololl(200304689)
- * @date: June 15, 2016
+ * @date: June 23, 2016
  * Desc: Shows all the games in the database and give the option to edit it
- * version:1.2
+ * version:3.5
  */
 
 namespace Game_tracker_project1

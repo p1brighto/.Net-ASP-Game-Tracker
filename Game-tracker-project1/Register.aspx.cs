@@ -12,9 +12,9 @@ using Microsoft.Owin.Security;
 
 /**
  * @author: Brighto Paul(2003003805),Kuldeepsingh Jeewoololl(200304689)
- * @date: June 8, 2016
- * version:1.0
- * Desc:
+ * @date: June 22, 2016
+ * version:3.0
+ * Desc:Register page for adding new user
  */
 namespace Game_tracker_project1
 {
