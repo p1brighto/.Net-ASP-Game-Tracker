@@ -23,7 +23,8 @@
                             DataNavigateUrlFields="GameID" DataNavigateUrlFormatString="Games.aspx?GameID={0}" 
                             ControlStyle-CssClass="btn btn-primary btn-sm"/>
                         <asp:CommandField HeaderText="Delete" DeleteText="<i class='fa fa-trash-o fa-lg'></i>Delete" ShowDeleteButton="true" 
-                            ButtonType="Link" ControlStyle-CssClass="btn btn-danger btn-sm" />
+                            ButtonType="Link" ControlStyle-CssClass="btn btn-danger btn-sm"
+                            />
                     </Columns>
                 </asp:GridView>
             </div> 
