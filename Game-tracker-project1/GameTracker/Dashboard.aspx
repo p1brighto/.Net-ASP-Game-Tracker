@@ -17,8 +17,8 @@
                         <asp:BoundField DataField="SpectatorsNo" HeaderText="Number of Spectators" Visible="true" SortExpression="SpectatorsNo"/>
                         <asp:BoundField DataField="WeekNo" HeaderText="Week Number" Visible="true" SortExpression="WeekNo"/>
                         <asp:BoundField DataField="EventDate" HeaderText="Event date" Visible="true" SortExpression="EventDate" DataFormatString="{0:MMM dd, yyyy}"/>
-                        <asp:HyperLinkField ControlStyle-CssClass="btn btn-primary btn-sm" Text="Teams" HeaderText="Teams List" NavigateUrl="~\Teams.aspx.cs" 
-                            DataNavigateUrlFields="GameID" DataNavigateUrlFormatString="Teams.aspx?GameID={0}" />                     
+                        <asp:HyperLinkField ControlStyle-CssClass="btn btn-primary btn-sm" Text="Teams" HeaderText="Teams List" NavigateUrl="../Teams.aspx.cs" 
+                            DataNavigateUrlFields="GameID" DataNavigateUrlFormatString="../Teams.aspx?GameID={0}" />                     
                         <asp:HyperLinkField HeaderText="Edit" Text="<i class='fa fa-pencil-square-o fa-lg'></i> Edit" NavigateUrl="~/GameTracker/Games.aspx.cs"
                             DataNavigateUrlFields="GameID" DataNavigateUrlFormatString="Games.aspx?GameID={0}" 
                             ControlStyle-CssClass="btn btn-primary btn-sm"/>
