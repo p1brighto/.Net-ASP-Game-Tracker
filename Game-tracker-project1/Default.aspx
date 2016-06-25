@@ -9,6 +9,7 @@
                 <p>Cras ultricies ligula sed magna dictum porta. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Sed porttitor lectus nibh. Pellentesque in ipsum id orci porta dapibus. Curabitur aliquet quam id dui posuere blandit. </p>
                 <ul>
                     <li><i class="fa fa-check"></i> Track your teams's score</li>
+                    <li><i class="fa fa-check"></i> View by week or day</li>
                     <li><i class="fa fa-check"></i> Instantly update scores</li>
                     <li><i class="fa fa-check"></i> Get your own profile banner</li>
                     <li><i class="fa fa-check"></i> Create as many games as you want</li>

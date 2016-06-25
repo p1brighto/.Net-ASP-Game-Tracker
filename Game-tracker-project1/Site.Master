@@ -8,9 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title></title>
     <!-- CSS Section -->
-    <link href="./Content/bootstrap.min.css" rel="stylesheet" />
-    <link href="./Content/font-awesome.min.css" rel="stylesheet" />
-    <link href="./Content/app.css" rel="stylesheet" />
+    <link href="/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="/Content/font-awesome.min.css" rel="stylesheet" />
+    <link href="/Content/app.css" rel="stylesheet" />
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
     <meta name="description" content="The description of my page" />
@@ -32,8 +32,8 @@
         </footer>
     </form>
     <!-- JavaScript -->
-    <script src="./Scripts/jquery-2.2.3.min.js"></script>
-    <script src="./Scripts/bootstrap.min.js"></script>
-    <script src="./Scripts/app.js"></script>
+    <script src="/Scripts/jquery-2.2.3.min.js"></script>
+    <script src="/Scripts/bootstrap.min.js"></script>
+    <script src="/Scripts/app.js"></script>
 </body>
 </html>
