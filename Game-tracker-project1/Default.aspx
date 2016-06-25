@@ -45,7 +45,7 @@
                         <asp:BoundField DataField="GameCategory" ControlStyle-Font-Bold="true" HeaderText="Game Category" SortExpression="GameCategory"/>
                         <asp:BoundField DataField="GameName" HeaderText="Name" SortExpression="GameName"/>
                         <asp:BoundField DataField="GameWinner" HeaderText="Winner" Visible="true" SortExpression="GameWinner"/>
-                        <asp:BoundField DataField="TotalScore" HeaderText="Score" Visible="true" SortExpression="TotalScore"/>
+                        <asp:BoundField DataField="TotalScore" HeaderText="Total Score" Visible="true" SortExpression="TotalScore"/>
                         <asp:BoundField DataField="SpectatorsNo" HeaderText="Spectators" Visible="true" SortExpression="SpectatorsNo"/>
                         <asp:BoundField DataField="EventDate" HeaderText="Date" Visible="true" SortExpression="EventDate" DataFormatString="{0:MMM dd, yyyy}"/>
                         <asp:HyperLinkField ControlStyle-CssClass="btn btn-primary btn-sm" Text="Learn More" HeaderText="Teams List" NavigateUrl="~/Teams.aspx.cs" 

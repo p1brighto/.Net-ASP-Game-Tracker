@@ -31,18 +31,6 @@
           <Property Name="TeamScore" Type="int" Nullable="false" />
           <Property Name="TotalScoreAllowed" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="Users">
-          <Key>
-            <PropertyRef Name="UserID" />
-          </Key>
-          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="FirstMidName" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="PhoneNumber" Type="varchar" MaxLength="15" Nullable="false" />
-          <Property Name="Email" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="UserName" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="UserPassword" Type="varchar" MaxLength="50" Nullable="false" />
-        </EntityType>
         <Association Name="FK_Teams_GameID">
           <End Role="Games" Type="Self.Games" Multiplicity="1" />
           <End Role="Teams" Type="Self.Teams" Multiplicity="*" />
@@ -58,7 +46,6 @@
         <EntityContainer Name="GameTrackerModelStoreContainer">
           <EntitySet Name="Games" EntityType="Self.Games" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Teams" EntityType="Self.Teams" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Teams_GameID" Association="Self.FK_Teams_GameID">
             <End Role="Games" EntitySet="Games" />
             <End Role="Teams" EntitySet="Teams" />
@@ -77,7 +64,7 @@
           <Property Name="WeekNo" Type="Int32" Nullable="false" />
           <Property Name="EventDate" Type="DateTime" Nullable="false" Precision="0" />
           <NavigationProperty Name="Teams" Relationship="Self.FK_Teams_GameID" FromRole="Games" ToRole="Teams" />
-          <Property Name="GameDesc" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="GameDesc" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="GameWinner" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="TotalScore" Type="Int32" Nullable="false" />
           <Property Name="GameCategory" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -92,21 +79,9 @@
           <Property Name="TeamName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="TeamScore" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Game" Relationship="Self.FK_Teams_GameID" FromRole="Teams" ToRole="Games" />
-          <Property Name="TeamDesc" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TeamDesc" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="TeamNo" Type="Int32" Nullable="false" />
           <Property Name="TotalScoreAllowed" Type="Int32" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Users">
-          <Key>
-            <PropertyRef Name="UserID" />
-          </Key>
-          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="FirstMidName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="PhoneNumber" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Email" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="UserName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="UserPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
         <Association Name="FK_Teams_GameID">
           <End Role="Games" Type="GameTrackerModel.Game" Multiplicity="1" />
@@ -123,7 +98,6 @@
         <EntityContainer Name="DefaultConnection" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Games" EntityType="GameTrackerModel.Game" />
           <EntitySet Name="Teams" EntityType="GameTrackerModel.Team" />
-          <EntitySet Name="Users1" EntityType="GameTrackerModel.Users" />
           <AssociationSet Name="FK_Teams_GameID" Association="Self.FK_Teams_GameID">
             <End Role="Games" EntitySet="Games" />
             <End Role="Teams" EntitySet="Teams" />
@@ -160,19 +134,6 @@
                 <ScalarProperty Name="GameID" ColumnName="GameID" />
                 <ScalarProperty Name="TeamName" ColumnName="TeamName" />
                 <ScalarProperty Name="TeamScore" ColumnName="TeamScore" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Users1">
-            <EntityTypeMapping TypeName="GameTrackerModel.Users">
-              <MappingFragment StoreEntitySet="Users">
-                <ScalarProperty Name="UserID" ColumnName="UserID" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="FirstMidName" ColumnName="FirstMidName" />
-                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
