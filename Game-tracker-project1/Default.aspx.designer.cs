@@ -13,6 +13,15 @@ namespace Game_tracker_project1 {
     public partial class Dashboard {
         
         /// <summary>
+        /// GameH2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl GameH2;
+        
+        /// <summary>
         /// WeekNoDropDownList control.
         /// </summary>
         /// <remarks>

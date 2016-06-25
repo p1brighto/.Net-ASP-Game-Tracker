@@ -14,7 +14,7 @@
                     <li><i class="fa fa-check"></i> Create as many games as you want</li>
                 </ul>
                 <div class="buttons-group">
-                  <a href="/register/" class="btn btn-default btn-blue">Get Started</a>
+                  <a href="/Register.aspx" class="btn btn-default btn-blue">Get Started</a>
                   <a href="#how-it-works" class="btn btn-lg btn-intro btn-primary">Learn More</a>
                 </div>
             </div>
@@ -30,10 +30,10 @@
             <div class=" col-md-9">
                 <div class="row">
                     <div class="col-md-9 text-left">
-                        <h2>Games of the day</h2>
+                        <h2 runat="server" id="GameH2">Games of the day</h2>
                     </div>
                     <div class="col-md-3">
-                        <span class="week">Week :</span>
+                        <span class="week">Show by Week :</span>
                         <asp:DropDownList ID="WeekNoDropDownList" AutoPostBack="true" CssClass="btn btn-default btn-sm dropdown-toogle" OnTextChanged="WeekNoDropDownList_TextChanged" runat="server">
                         </asp:DropDownList>
                     </div>
@@ -53,6 +53,7 @@
                 </asp:GridView>
             </div>
             <div class="col-md-3">
+                <span class="date">Show by Date :</span>
                 <asp:Calendar ID="DateSelectorCalendar" OnSelectionChanged="DateSelectorCalendar_SelectionChanged" runat="server"></asp:Calendar>
             </div> 
         </div>
