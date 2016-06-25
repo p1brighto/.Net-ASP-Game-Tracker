@@ -25,7 +25,7 @@
                         </div>
                         <div class="form-group">
                             <label class="control-label" for="GameDescTextBox">Game Description</label>
-                            <asp:TextBox runat="server" MaxLength="100" CssClass="form-control" ID="GameDescTextBox" placeholder="Game Description" required="true"></asp:TextBox>
+                            <asp:TextBox runat="server" MaxLength="400" CssClass="form-control" ID="GameDescTextBox" placeholder="Game Description" required="true"></asp:TextBox>
                         </div>
                     </div>
                 </div>
@@ -38,7 +38,7 @@
                         </div>
                         <div class="form-group">
                             <label class="control-label" for="Team1DescTextBox">Team 1 Description</label>
-                            <asp:TextBox runat="server" MaxLength="100" CssClass="form-control" ID="Team1DescTextBox" placeholder="Description of the Team-1" required="true"></asp:TextBox>
+                            <asp:TextBox runat="server" MaxLength="400" CssClass="form-control" ID="Team1DescTextBox" placeholder="Description of the Team-1" required="true"></asp:TextBox>
                         </div>
                         <div class="form-group">
                             <label class="control-label" for="Team1PointsTextBox">Team 1 Points</label>
@@ -53,7 +53,7 @@
                         </div>
                         <div class="form-group">
                             <label class="control-label" for="Team2DescTextBox">Team 2 Description </label>
-                            <asp:TextBox MaxLength="100" runat="server" CssClass="form-control" ID="Team2DescTextBox" placeholder="Description of the Team-2" required="true"></asp:TextBox>
+                            <asp:TextBox MaxLength="400" runat="server" CssClass="form-control" ID="Team2DescTextBox" placeholder="Description of the Team-2" required="true"></asp:TextBox>
                         </div>
                         <div class="form-group">
                             <label class="control-label" for="Team2PointsTextBox">Team 2 Points </label>
