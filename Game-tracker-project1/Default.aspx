@@ -30,7 +30,7 @@
             <div class=" col-md-9">
                 <div class="row">
                     <div class="col-md-9 text-left">
-                        <h2 runat="server" id="GameH2">Games of the day</h2>
+                        <h2 runat="server" id="GameH2">Games of the week selected</h2>
                     </div>
                     <div class="col-md-3">
                         <span class="week">Show by Week :</span>

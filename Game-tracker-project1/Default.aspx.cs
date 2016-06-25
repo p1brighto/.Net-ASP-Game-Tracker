@@ -40,7 +40,7 @@ namespace Game_tracker_project1
             }
             else
             {
-                GamesGridView.Focus();
+
             }
         }
         /**
@@ -63,6 +63,7 @@ namespace Game_tracker_project1
         {
             this.GetWeekNo();//initialise the selected_week match to the calender
             this.GetGames(0);//get games by date
+            GameH2.InnerText = "Games of the day selected";
         }
         /**
          * <summary>
@@ -197,6 +198,7 @@ namespace Game_tracker_project1
                 //shows the game list in the week selected
                 this.GetGames(1);
                 DateSelectorCalendar.SelectedDate = Convert.ToDateTime("01/01/0001");//deselect the date in calender
+                GameH2.InnerText = "Games of the week selected";
             }
         }
 
