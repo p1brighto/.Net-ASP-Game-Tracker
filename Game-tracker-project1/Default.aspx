@@ -1,4 +1,4 @@
-﻿<%@ Page MaintainScrollPositionOnPostback="true" Title="Home" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"  CodeBehind="Default.aspx.cs" Inherits="Game_tracker_project1.Dashboard" %>
+﻿<%@ Page Title="Home" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" MaintainScrollPositionOnPostback="true" CodeBehind="Default.aspx.cs" Inherits="Game_tracker_project1.Dashboard" %>
 <asp:Content ID="Content2" cssClass="section" ContentPlaceHolderID="MainContent" runat="server">
 
     <section id="top-banner" class="bg-intro">

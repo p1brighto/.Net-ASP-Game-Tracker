@@ -193,7 +193,6 @@ namespace Game_tracker_project1
             if ((Convert.ToInt32(Team1PointsTextBox.Text) + Convert.ToInt32(Team2PointsTextBox.Text)) > Convert.ToInt32(e.Value))
             {
                 e.IsValid = false;
-                SaveButton.Focus();
             }
             else
             {
