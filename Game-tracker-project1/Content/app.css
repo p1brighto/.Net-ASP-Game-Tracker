@@ -243,7 +243,7 @@ Classes
 }
 
 .paddingbottom-150 {
-    padding-bottom: 150px;
+    padding-bottom: 80px;
 }
 
 .padding-150 {
@@ -376,9 +376,10 @@ Backgrounds
 ========================================================================== */
 
 .bg-intro {
-    background: url(../img/intro-bg.jpg) no-repeat center bottom;
-    background-size: cover;
-    background-attachment: fixed;
+    background: #1a1a1a;
+    margin-top: -60px;
+    margin-bottom: 60px;
+    padding: 40px 0;
 }
 
 .bg-footer {
@@ -1513,6 +1514,7 @@ Media Queries
     border-radius: 0;
     text-transform: uppercase;
     border: 1px solid rgba(0,0,0,0.1);
+    color: #FFF;
 }
 
 .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
@@ -1586,3 +1588,25 @@ hr {
 .btn {-webkit-transition: all .3s ease-in-out; -moz-transition: all .3s ease-in-out; transition: all .3s ease-in-out;}
 .blue-btn { padding: 12px 15px; font-size: 12px; font-family: "Montserrat", sans-serif; text-transform: uppercase; font-weight: 700; -webkit-border-radius: 2px; -moz-border-radius: 2px; -ms-border-radius: 2px; -o-border-radius: 2px; border-radius: 2px; background-color: #00a8d6; color: white;}
 .blue-btn:hover { background-color: #31373a; color: #FFF;}
+
+iframe {
+    width: 100%;
+    height: 370px;
+}
+
+.banner-content {
+    text-align: left;
+}
+.banner-content h2, .banner-content p {
+    color: #FFF;
+}
+
+.banner-content li {
+    text-align: left;
+    color: rgba(255,255,255,0.8);
+}
+
+.week {
+    float: left;
+    margin-right: 15px;
+}

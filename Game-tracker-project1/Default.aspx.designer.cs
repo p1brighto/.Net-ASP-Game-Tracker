@@ -13,6 +13,15 @@ namespace Game_tracker_project1 {
     public partial class Dashboard {
         
         /// <summary>
+        /// WeekNoDropDownList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList WeekNoDropDownList;
+        
+        /// <summary>
         /// GamesGridView control.
         /// </summary>
         /// <remarks>
@@ -29,14 +38,5 @@ namespace Game_tracker_project1 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Calendar DateSelectorCalendar;
-        
-        /// <summary>
-        /// WeekNoDropDownList control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList WeekNoDropDownList;
     }
 }

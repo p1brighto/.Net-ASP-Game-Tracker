@@ -1,12 +1,43 @@
 ﻿<%@ Page Title="Home" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="Game_tracker_project1.Dashboard" %>
 <asp:Content ID="Content2" cssClass="section" ContentPlaceHolderID="MainContent" runat="server">
-    <div class="container">
 
-    </div>
+    <section id="top-banner" class="bg-intro">
+        <div class="container">
+          <div class="row banner-content">
+            <div class="col-md-6">
+                <h2>Welcome To Game Tracker</h2>
+                <p>Cras ultricies ligula sed magna dictum porta. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Sed porttitor lectus nibh. Pellentesque in ipsum id orci porta dapibus. Curabitur aliquet quam id dui posuere blandit. </p>
+                <ul>
+                    <li><i class="fa fa-check"></i> Track your teams's score</li>
+                    <li><i class="fa fa-check"></i> Instantly update scores</li>
+                    <li><i class="fa fa-check"></i> Get your own profile banner</li>
+                    <li><i class="fa fa-check"></i> Create as many games as you want</li>
+                </ul>
+                <div class="buttons-group">
+                  <a href="/register/" class="btn btn-default btn-blue">Get Started</a>
+                  <a href="#how-it-works" class="btn btn-lg btn-intro btn-primary">Learn More</a>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <iframe src="https://www.youtube.com/embed/OCWj5xgu5Ng" frameborder="0" allowfullscreen></iframe>
+            </div>
+      
+          </div>
+        </div>
+    </section>
     <div class="container">
         <div class="row">
             <div class=" col-md-9">
-                <h2>Games of the day</h2>
+                <div class="row">
+                    <div class="col-md-9 text-left">
+                        <h2>Games of the day</h2>
+                    </div>
+                    <div class="col-md-3">
+                        <span class="week">Week :</span>
+                        <asp:DropDownList ID="WeekNoDropDownList" AutoPostBack="true" CssClass="btn btn-default btn-sm dropdown-toogle" OnTextChanged="WeekNoDropDownList_TextChanged" runat="server">
+                        </asp:DropDownList>
+                    </div>
+                </div>
                 <asp:GridView runat="server"  CssClass="table table-bordered table-striped table-hover" ID="GamesGridView" DataKeyNames="GameID" AutoGenerateColumns="false"
                      AllowSorting="true" OnSorting="GamesGridView_Sorting" OnRowDataBound="GamesGridView_RowDataBound">
                     <Columns>
@@ -23,50 +54,8 @@
             </div>
             <div class="col-md-3">
                 <asp:Calendar ID="DateSelectorCalendar" OnSelectionChanged="DateSelectorCalendar_SelectionChanged" runat="server"></asp:Calendar>
-                <div class="row">
-                    <div class="col-md-6 text-right">                      
-                        <h4>Week :</h4>
-                    </div>
-                    <div class="col-md-4">
-                        <asp:DropDownList ID="WeekNoDropDownList" AutoPostBack="true" CssClass="btn btn-default btn-sm dropdown-toogle" OnTextChanged="WeekNoDropDownList_TextChanged" runat="server">
-                        </asp:DropDownList>
-                    </div>
-                </div>
             </div> 
         </div>
     </div>
-
-    <section id="brief-intro" class="section bg-blue border-top border-bottom white-text">
-        <div class="container">
-
-          <div class="row">
-            <div class="col-md-6">        
-              <img src="img/survey-mockup.png" alt="" title="" class="img-responsive hidden-xs hidden-sm">
-            </div>
-            <div class="col-md-6">
-              <div class="row">
-                <div class="col-md-12 margintop-50">
-                  <h2>Intuitive - Simple - Fabulous</h2>
-                  <p>Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.</p>
-                </div>            
-              </div>
-              <div class="row">
-                <div class="col-sm-6">
-                  <i class="font-icon ion-ios-paper-outline"></i>
-                  <h5>Clean &amp; Minimalistic</h5>
-                  <p> There’s a lot more to simple design than you think.</p>
-                </div>
-                <div class="col-sm-6">
-                  <i class="font-icon ion-ios-loop"></i>
-                  <h5>Easy to customize</h5>
-                  <p> Get fast and easy access to the features you use most in our menu.</p>
-                </div>
-              </div>
-            </div>
-        
-          </div>
-      
-        </div>
-      </section>
 
 </asp:Content>
