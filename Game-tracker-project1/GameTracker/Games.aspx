@@ -21,11 +21,11 @@
                         </div>
                         <div class="form-group">
                             <label class="control-label" for="GameName">Game Name</label>
-                            <asp:TextBox runat="server" CssClass="form-control" ID="GameNameTextBox" placeholder="Game Name" required="true"></asp:TextBox>
+                            <asp:TextBox runat="server" MaxLength="50" CssClass="form-control" ID="GameNameTextBox" placeholder="Game Name" required="true"></asp:TextBox>
                         </div>
                         <div class="form-group">
                             <label class="control-label" for="GameDescTextBox">Game Description</label>
-                            <asp:TextBox runat="server" CssClass="form-control" ID="GameDescTextBox" placeholder="Game Description" required="true"></asp:TextBox>
+                            <asp:TextBox runat="server" MaxLength="100" CssClass="form-control" ID="GameDescTextBox" placeholder="Game Description" required="true"></asp:TextBox>
                         </div>
                     </div>
                 </div>
@@ -34,11 +34,11 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label class="control-label" for="Team1TextBox">Team 1</label>
-                            <asp:TextBox runat="server" CssClass="form-control" ID="Team1TextBox" placeholder="Name of the Team-1" required="true"></asp:TextBox>
+                            <asp:TextBox runat="server" MaxLength="50" CssClass="form-control" ID="Team1TextBox" placeholder="Name of the Team-1" required="true"></asp:TextBox>
                         </div>
                         <div class="form-group">
                             <label class="control-label" for="Team1DescTextBox">Team 1 Description</label>
-                            <asp:TextBox runat="server" CssClass="form-control" ID="Team1DescTextBox" placeholder="Description of the Team-1" required="true"></asp:TextBox>
+                            <asp:TextBox runat="server" MaxLength="100" CssClass="form-control" ID="Team1DescTextBox" placeholder="Description of the Team-1" required="true"></asp:TextBox>
                         </div>
                         <div class="form-group">
                             <label class="control-label" for="Team1PointsTextBox">Team 1 Points</label>
@@ -49,11 +49,11 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label class="control-label" for="Team2TextBox">Team 2</label>
-                            <asp:TextBox runat="server" CssClass="form-control" ID="Team2TextBox" placeholder="Name of the Team-2" required="true"></asp:TextBox>
+                            <asp:TextBox MaxLength="50" runat="server" CssClass="form-control" ID="Team2TextBox" placeholder="Name of the Team-2" required="true"></asp:TextBox>
                         </div>
                         <div class="form-group">
                             <label class="control-label" for="Team2DescTextBox">Team 2 Description </label>
-                            <asp:TextBox runat="server" CssClass="form-control" ID="Team2DescTextBox" placeholder="Description of the Team-2" required="true"></asp:TextBox>
+                            <asp:TextBox MaxLength="100" runat="server" CssClass="form-control" ID="Team2DescTextBox" placeholder="Description of the Team-2" required="true"></asp:TextBox>
                         </div>
                         <div class="form-group">
                             <label class="control-label" for="Team2PointsTextBox">Team 2 Points </label>
@@ -69,12 +69,12 @@
                         <div class="form-group">
                             <label class="control-label" for="SpectatorTextBox">Number of Spectators </label>
                             <asp:TextBox runat="server" CssClass="form-control" ID="SpectatorTextBox" placeholder="Number of Spectators" required="true"></asp:TextBox>
-                            <asp:RegularExpressionValidator Display="Dynamic" CssClass="label label-danger" Font-Size="small" ID="RegularExpressionValidator1" ControlToValidate="SpectatorTextBox" ValidationExpression="\d+" runat="server" ErrorMessage="Only Numbers allowed!"></asp:RegularExpressionValidator>
+                            <asp:RegularExpressionValidator Display="Dynamic" CssClass="label label-danger" Font-Size="small" ID="RegularExpressionValidator1" ControlToValidate="SpectatorTextBox" ValidationExpression="\d+" runat="server" ErrorMessage="Only integer numbers allowed!"></asp:RegularExpressionValidator>
                         </div>  
                         <div class="form-group">
                             <label class="control-label" for="PointsAllowedTextBox">Total Pointss allowed </label>
                             <asp:TextBox runat="server" CssClass="form-control" ID="PointsAllowedTextBox" placeholder="Total Pointss allowed" required="true"></asp:TextBox>
-                            <asp:RegularExpressionValidator Display="Dynamic" CssClass="label label-danger" Font-Size="small"  ID="RegularExpressionValidator2" ControlToValidate="PointsAllowedTextBox" ValidationExpression="\d+" runat="server" ErrorMessage="Only Numbers allowed!"></asp:RegularExpressionValidator>
+                            <asp:RegularExpressionValidator Display="Dynamic" CssClass="label label-danger" Font-Size="small"  ID="RegularExpressionValidator2" ControlToValidate="PointsAllowedTextBox" ValidationExpression="\d+" runat="server" ErrorMessage="Only integer numbers allowed!"></asp:RegularExpressionValidator>
                             <asp:CustomValidator ID="CustomValidator1" CssClass="label label-danger" Font-Size="small"  SetFocusOnError="true" runat="server"  ControlToValidate="PointsAllowedTextBox" OnServerValidate="CustomValidator1_ServerValidate" Display="Dynamic" ErrorMessage="Individual points cannot exceed Total pionts!"></asp:CustomValidator>
                         </div>
                         <div class="form-group">
