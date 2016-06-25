@@ -517,7 +517,7 @@ Headline
  Navigation
 ========================================================================== */ 
 .navbar-inverse {
-    margin-bottom: 0;
+    margin-bottom: 60px;
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
     border-radius: 0;
@@ -549,6 +549,10 @@ Headline
     padding: 0;
     display: inline-block;
     line-height: normal;
+}
+
+.navbar-inverse .navbar-nav > li > a i {
+    margin-right: 10px;
 }
 
 .navbar-inverse .navbar-nav > li > a, 
@@ -642,27 +646,8 @@ Headline
     border-color: rgba(0,0,0,0.1);
 }
 
-.nav li a:after {
-    display: block;
-    content: '';
-    padding-bottom: 5px;
-    border-bottom: solid 2px #ff4003;
-    -webkit-transform: scaleX(0.0001);
-    -ms-transform: scaleX(0.0001);
-    transform: scaleX(0.0001);
-    -webkit-transition: -webkit-transform 350ms ease-in-out;
-    transition: transform 350ms ease-in-out;
-    margin-bottom: -2px;
-}
-
-.nav li a:hover:after {
-    -webkit-transform: scaleX(1);
-    -ms-transform: scaleX(1);
-    transform: scaleX(1);
-}
-
 .nav li.active a {
-    border-bottom: solid 2px #ff4003;
+    border-bottom: none;
 }
 
 
@@ -1108,7 +1093,8 @@ Footer
  ========================================================================== */
 .footer {
     background-color: #1b1b1b;
-    padding: 60px 0;
+    padding: 30px 0;
+    margin-top: 40px;
 }
 
 .footer h3 {
@@ -1121,7 +1107,7 @@ Footer
 .footer p,
 .footer a {
     color: #ADADAD;
-    margin-bottom: 10px;
+    margin-bottom: 0;
 }
 
 .footer a:hover {
@@ -1516,3 +1502,87 @@ Media Queries
         height: 200px;
     }
 } 
+
+
+.btn-group-sm>.btn, .btn-sm {
+    padding: 8px 10px;
+    line-height: 1.5;
+    background: #ff4003;
+    font-size: 12px;
+    font-family: 'montserrat';
+    border-radius: 0;
+    text-transform: uppercase;
+    border: 1px solid rgba(0,0,0,0.1);
+}
+
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+    padding: 14px;
+}
+
+.login-form input,
+.login-form textarea {
+  display: block;
+  padding: 10px 15px;
+  height: auto;
+  margin: 10px auto;
+  border-radius: 0;
+  font-size: 14px;
+}
+
+.login-form label {
+  text-transform: uppercase;
+  color: #1a1a1a;
+  display: block;
+}
+
+.login-form input[type="button"],
+.login-form input[type="submit"] {
+  display: block;
+  padding: 15px;
+  width: 100%;
+  background: #1a1a1a;
+  color: #FFF;
+  text-transform: uppercase;
+  border-radius: 0;
+  font-weight: bold;
+  font-size: 14px;
+  border: 2px solid #1a1a1a;
+}
+
+.btn-login {
+  background: #3AADF4;
+  border: 2px solid #3AADF4;
+}
+
+#MainContent_DateSelectorCalendar {
+    width: 100%;
+    border: 1px solid #DDD;
+    margin: 20px auto;
+}
+
+#MainContent_DateSelectorCalendar a {
+    color: #888;
+}
+
+#MainContent_DateSelectorCalendar tr {
+    background-color: transparent;
+}
+#MainContent_DateSelectorCalendar td {
+    border: 1px solid #DDD;
+    padding: 5px;
+    background-color: transparent;
+}
+
+.tick-list {margin: 15px 0;}
+.tick-list li {list-style: none; margin-bottom: 10px;}
+.tick-list li i {margin-right: 10px; color: #00a8d6;}
+
+hr {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    border-top: 1px solid rgba(0, 0, 0, 0.07);
+}
+
+.btn {-webkit-transition: all .3s ease-in-out; -moz-transition: all .3s ease-in-out; transition: all .3s ease-in-out;}
+.blue-btn { padding: 12px 15px; font-size: 12px; font-family: "Montserrat", sans-serif; text-transform: uppercase; font-weight: 700; -webkit-border-radius: 2px; -moz-border-radius: 2px; -ms-border-radius: 2px; -o-border-radius: 2px; border-radius: 2px; background-color: #00a8d6; color: white;}
+.blue-btn:hover { background-color: #31373a; color: #FFF;}

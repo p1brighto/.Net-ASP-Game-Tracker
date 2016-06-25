@@ -16,7 +16,7 @@
             <ul class="nav navbar-nav navbar-right">
                 <li id="home" runat="server"><a href="/Default.aspx"><i class="fa fa-home fa-lg"></i> Home</a></li>
                 <li id="about" runat="server"><a href="/About.aspx"><i class="fa fa-gamepad fa-lg"></i> About</a></li>
-                <li id="Li1" runat="server"><a href="/About.aspx"><i class="fa fa-gamepad fa-lg"></i> Contact</a></li>
+                <li id="Li1" runat="server"><a href="/contact.aspx"><i class="fa fa-gamepad fa-lg"></i> Contact</a></li>
                 
                 <asp:PlaceHolder ID="PublicPlaceHolder" runat="server">
                     <li id="login" runat="server"><a href="/Login.aspx"><i class="fa fa-sign-in fa-lg"></i> Login</a></li>
