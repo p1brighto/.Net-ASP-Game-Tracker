@@ -38,10 +38,6 @@ namespace Game_tracker_project1
                 this.GetGames(1);
                 DateSelectorCalendar.SelectedDate = Convert.ToDateTime("01/01/0001");//deselecting the date in calender
             }
-            else
-            {
-
-            }
         }
         /**
          * <summary>

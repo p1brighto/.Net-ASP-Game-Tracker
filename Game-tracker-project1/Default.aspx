@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Home" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="Game_tracker_project1.Dashboard" %>
+﻿<%@ Page Title="Home" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" MaintainScrollPositionOnPostback="true" CodeBehind="Default.aspx.cs" Inherits="Game_tracker_project1.Dashboard" %>
 <asp:Content ID="Content2" cssClass="section" ContentPlaceHolderID="MainContent" runat="server">
 
     <section id="top-banner" class="bg-intro">
@@ -30,7 +30,7 @@
             <div class=" col-md-9">
                 <div class="row">
                     <div class="col-md-9 text-left">
-                        <h2 runat="server" id="GameH2">Games of the week selected</h2>
+                        <h2 runat="server" id="GameH2">Games of the current week</h2>
                     </div>
                     <div class="col-md-3">
                         <span class="week">Show by Week :</span>
