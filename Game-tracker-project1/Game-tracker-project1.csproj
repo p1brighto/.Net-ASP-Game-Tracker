@@ -264,9 +264,6 @@
     <Compile Include="Models\Team.cs">
       <DependentUpon>GameSelectorModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Users.cs">
-      <DependentUpon>GameSelectorModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Register.aspx.cs">
       <DependentUpon>Register.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

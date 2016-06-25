@@ -27,6 +27,5 @@ namespace Game_tracker_project1.Models
     
         public virtual DbSet<Game> Games { get; set; }
         public virtual DbSet<Team> Teams { get; set; }
-        public virtual DbSet<Users> Users1 { get; set; }
     }
 }
