@@ -44,6 +44,7 @@
                     <Columns>
                         <asp:BoundField DataField="GameCategory" ControlStyle-Font-Bold="true" HeaderText="Game Category" SortExpression="GameCategory"/>
                         <asp:BoundField DataField="GameName" HeaderText="Name" SortExpression="GameName"/>
+                        <asp:BoundField DataField="GameDesc" HeaderText="Description" SortExpression="GameDesc"/>
                         <asp:BoundField DataField="GameWinner" HeaderText="Winner" Visible="true" SortExpression="GameWinner"/>
                         <asp:BoundField DataField="TotalScore" HeaderText="Total Score" Visible="true" SortExpression="TotalScore"/>
                         <asp:BoundField DataField="SpectatorsNo" HeaderText="Spectators" Visible="true" SortExpression="SpectatorsNo"/>
