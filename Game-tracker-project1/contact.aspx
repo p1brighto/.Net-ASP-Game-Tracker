@@ -3,7 +3,8 @@
 
     <div class="container">
       <div class="row">          
-          <div class="col-md-8">            
+          <div class="col-md-8"> 
+            <h3>Get in touch!</h3>           
             <div class="login-form">
                 <div class="form-group">
                     <label for="name">Name:</label>

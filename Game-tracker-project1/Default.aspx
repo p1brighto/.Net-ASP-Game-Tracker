@@ -5,8 +5,11 @@
         <div class="container">
           <div class="row banner-content">
             <div class="col-md-6">
-                <h2>Welcome To Game Tracker</h2>
-                <p>Cras ultricies ligula sed magna dictum porta. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Sed porttitor lectus nibh. Pellentesque in ipsum id orci porta dapibus. Curabitur aliquet quam id dui posuere blandit. </p>
+                <h2>Welcome To Game Tracker</h2> 
+                <p> This application will display the weekly or daily statistics  of each game. 
+                    Each game will track two teams and the web application will record which
+                    team won the game. It also measure how many points were scored , how many points
+                    were allowed (or lost) for each team and how many spectators watched each game. </p>
                 <ul>
                     <li><i class="fa fa-check"></i> Track your teams's score</li>
                     <li><i class="fa fa-check"></i> View by week or day</li>
@@ -46,7 +49,7 @@
                         <asp:BoundField DataField="GameName" HeaderText="Name" SortExpression="GameName"/>
                         <asp:BoundField DataField="GameDesc" HeaderText="Description" SortExpression="GameDesc"/>
                         <asp:BoundField DataField="GameWinner" HeaderText="Winner" Visible="true" SortExpression="GameWinner"/>
-                        <asp:BoundField DataField="TotalScore" HeaderText="Total Score" Visible="true" SortExpression="TotalScore"/>
+                        <asp:BoundField DataField="TotalScore" HeaderText="Total Points" Visible="true" SortExpression="TotalScore"/>
                         <asp:BoundField DataField="SpectatorsNo" HeaderText="Spectators" Visible="true" SortExpression="SpectatorsNo"/>
                         <asp:BoundField DataField="EventDate" HeaderText="Date" Visible="true" SortExpression="EventDate" DataFormatString="{0:MMM dd, yyyy}"/>
                         <asp:HyperLinkField ControlStyle-CssClass="btn btn-primary btn-sm" Text="Learn More" HeaderText="Teams List" NavigateUrl="~/Teams.aspx.cs" 

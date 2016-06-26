@@ -10,12 +10,9 @@
                         <asp:BoundField DataField="TeamID" HeaderText="Team ID" Visible="false"/>
                         <asp:BoundField DataField="GameID" HeaderText="Game ID" Visible="false"/>
                         <asp:BoundField DataField="TeamName" HeaderText="Team Name" Visible="true" SortExpression="TeamName"/>                    
-                        <asp:BoundField DataField="TeamDesc" HeaderText="Team Description" Visible="true" SortExpression="TeamDesc"/>
-                        <asp:BoundField DataField="TotalScoreAllowed" HeaderText="Total Points Allowed" Visible="true" SortExpression="TotalScoreAllowed"/>
-                        <asp:BoundField DataField="TeamScore" HeaderText="Points Scored" Visible="true" SortExpression="TeamScore"/>
-                        <asp:HyperLinkField  HeaderText="Edit"  Text="<i class='fa fa-pencil-square-o fa-lg'></i> Edit" NavigateUrl="~/Games.aspx.cs"
-                            DataNavigateUrlFields="GameID" DataNavigateUrlFormatString="Games.aspx?GameID={0}" 
-                            ControlStyle-CssClass="btn btn-primary btn-sm" Visible="false"/>                  
+                        <asp:BoundField DataField="TeamDesc" HeaderText="Description" Visible="true" SortExpression="TeamDesc"/>
+                        <asp:BoundField DataField="TotalScoreAllowed" HeaderText="Points Allowed" Visible="true" SortExpression="TotalScoreAllowed"/>
+                        <asp:BoundField DataField="TeamScore" HeaderText="Points Scored" Visible="true" SortExpression="TeamScore"/>                 
                     </Columns>
                 </asp:GridView>
             </div> 

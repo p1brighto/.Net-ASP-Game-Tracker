@@ -17,8 +17,8 @@
             </div>
             <div class="col-md-4">
               <h2>New Here ? </h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae, libero voluptates. Cumque consectetur vel voluptate suscipit pariatur!</p>
-              <p>Voluptate officia ipsa officiis vero, est tempore quas possimus nulla mollitia id, blanditiis.</p>
+              <p>Do you want to join us ?, Come on! Lets  set up your account.</p>
+              <p>Few steps away to get in.</p>
               <a href="/register.aspx" class="btn btn-default btn-blue">Register Now</a>
             </div>
         </div>
