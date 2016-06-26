@@ -72,10 +72,10 @@
                             <asp:RegularExpressionValidator Display="Dynamic" CssClass="label label-danger" Font-Size="small" ID="RegularExpressionValidator1" ControlToValidate="SpectatorTextBox" ValidationExpression="\d+" runat="server" ErrorMessage="Only integer numbers allowed!"></asp:RegularExpressionValidator>
                         </div>  
                         <div class="form-group">
-                            <label class="control-label" for="PointsAllowedTextBox">Total Pointss allowed </label>
+                            <label class="control-label" for="PointsAllowedTextBox">Total Points allowed </label>
                             <asp:TextBox runat="server" CssClass="form-control" ID="PointsAllowedTextBox" placeholder="Total Pointss allowed" required="true"></asp:TextBox>
                             <asp:RegularExpressionValidator Display="Dynamic" CssClass="label label-danger" Font-Size="small"  ID="RegularExpressionValidator2" ControlToValidate="PointsAllowedTextBox" ValidationExpression="\d+" runat="server" ErrorMessage="Only integer numbers allowed!"></asp:RegularExpressionValidator>
-                            <asp:CustomValidator ID="CustomValidator1" CssClass="label label-danger" Font-Size="small"  SetFocusOnError="true" runat="server"  ControlToValidate="PointsAllowedTextBox" OnServerValidate="CustomValidator1_ServerValidate" Display="Dynamic" ErrorMessage="Each team points cannot exceed pionts allowed!"></asp:CustomValidator>
+                            <asp:CustomValidator ID="CustomValidator1" CssClass="label label-danger" Font-Size="small"  SetFocusOnError="true" runat="server"  ControlToValidate="PointsAllowedTextBox" OnServerValidate="CustomValidator1_ServerValidate" Display="Dynamic" ErrorMessage="Individual team points cannot exceed  the Pionts allowed!"></asp:CustomValidator>
                         </div>
                         <div class="form-group">
                             <label class="control-label" for="EventDateTextBox">Event Date</label>
